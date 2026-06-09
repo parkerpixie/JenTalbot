@@ -3,11 +3,16 @@
  * Colour palette inspired by muted purples, creams and a coral accent.
  */
 
+/*
+ * Colour palette variables. These can be tweaked to update the overall
+ * look and feel of the site without touching the rest of the CSS.
+ */
 :root {
     --primary-color: #675e91;
     --light-primary: #9389bf;
     --background-color: #f7f3ed;
     --accent-color: #ef7978;
+    --accent-hover: #d96463;
     --text-color: #333333;
     --card-bg: #ffffff;
     --card-border: #e0dfe6;
@@ -33,10 +38,32 @@ body {
 }
 
 /* Header styles */
+/*
+ * Header (hero) styles. The .hero-bg class applies a custom
+ * background image with a semi‑transparent overlay. The overlay
+ * ensures the text remains legible on top of the image. The hero
+ * uses a larger vertical padding to give breathing room to the
+ * tagline and call to action.
+ */
+.hero-bg {
+    /* Use a linear gradient to create a rich background without
+       depending on an external image. This palette transitions
+       from a lighter purple to a deep indigo, echoing the
+       examples you liked. */
+    background-image: linear-gradient(135deg, #8670b6 0%, #332e53 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
 header {
+    /* fallback for browsers that do not support the hero image */
     background: var(--primary-color);
     color: #fff;
-    padding: 3rem 0;
+    padding: 4rem 0;
     text-align: center;
 }
 header h1 {
@@ -61,7 +88,7 @@ header p {
     transition: background 0.3s ease;
 }
 .cta-btn:hover {
-    background: #d96463;
+    background: var(--accent-hover);
 }
 .cta-btn.secondary {
     background: var(--light-primary);
@@ -115,7 +142,9 @@ header p {
 
 /* Three cards section */
 .three-up {
-    background: var(--light-primary);
+    /* Use a very light purple background to separate the card section
+       from the hero and footer. */
+    background: #f0ebf8;
     padding: 3rem 0;
 }
 .cards {
