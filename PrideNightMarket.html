@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Madison Night Market Vendor Watch</title>
+  <style>
+    :root { --lav:#6b3fa0; --lav2:#efe5ff; --ink:#26202c; --coral:#ff6f61; --mint:#dff7ec; --paper:#fffaf4; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:linear-gradient(135deg,#fff8fb,#f3eaff 50%,#fffaf4); }
+    header { padding: 28px 18px 18px; text-align:center; background: radial-gradient(circle at top left,#ffdce7,transparent 35%), radial-gradient(circle at top right,#e6d1ff,transparent 35%); }
+    h1 { margin:0; font-size: clamp(2rem, 6vw, 4rem); letter-spacing:-.04em; color:var(--lav); }
+    .subtitle { max-width: 850px; margin: 10px auto 0; font-size: 1rem; line-height:1.5; }
+    nav { position: sticky; top:0; z-index:10; display:flex; gap:8px; overflow:auto; padding:10px; background:rgba(255,255,255,.88); backdrop-filter: blur(8px); border-bottom:1px solid #e8dff1; }
+    nav a { white-space:nowrap; color:var(--lav); text-decoration:none; font-weight:700; background:#fff; border:1px solid #e3d6f2; padding:8px 10px; border-radius:999px; }
+    main { max-width:1100px; margin:0 auto; padding:18px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:18px 0; }
+    .button { display:inline-block; padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:800; color:white; background:var(--lav); box-shadow:0 6px 18px rgba(107,63,160,.18); }
+    .button.secondary { background:var(--coral); }
+    .mapwrap { background:white; border:1px solid #eadff5; border-radius:24px; padding:14px; box-shadow:0 10px 28px rgba(80,50,100,.08); margin-bottom:18px; }
+    iframe { width:100%; height:420px; border:0; border-radius:16px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:14px; }
+    .block { background:rgba(255,255,255,.92); border:1px solid #eadff5; border-radius:24px; padding:16px; box-shadow:0 8px 22px rgba(80,50,100,.07); }
+    .block h2 { margin:.1rem 0 .15rem; color:var(--lav); font-size:1.1rem; }
+    .range { margin:.1rem 0 .65rem; color:#6f6478; font-weight:700; font-size:.9rem; }
+    ul { list-style:none; padding:0; margin:0; }
+    li { padding:9px 0; border-top:1px dashed #e5d5ef; }
+    li:first-child { border-top:0; }
+    input[type="checkbox"] { width:1.15rem; height:1.15rem; vertical-align:middle; accent-color:var(--lav); }
+    a { color:#4a2580; }
+    .desc { margin:3px 0 0 1.55rem; color:#51485c; font-size:.92rem; }
+    .tag { display:inline-block; margin-left:6px; padding:2px 7px; border-radius:999px; background:var(--mint); color:#176241; font-size:.75rem; font-weight:800; }
+    footer { text-align:center; padding:30px 18px; color:#71657b; }
+    @media print {
+      body { background:white; } header, nav, .mapwrap, .actions, footer { display:none; } main { padding:0; } .grid { grid-template-columns: repeat(3, 1fr); gap:8px; } .block { box-shadow:none; border:1px solid #ddd; padding:8px; break-inside: avoid; } li { padding:3px 0; } .desc { font-size:8pt; } .block h2 { font-size:10pt; } .range { font-size:8pt; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Madison Night Market Vendor Watch</h1>
+  <p class="subtitle">Start at Capitol Square / E Mifflin, then wander down State Street with Porter. Check off booths, open shop links, and follow the sparkly breadcrumb trail.</p>
+</header>
+<nav>
+  <a href="#capital-square---e-mifflin">Capital</a><a href="#block-1---state-st:-e-mifflin-s-carroll-to-dayton-n-fairchild">Block 1</a><a href="#block-2---state-st:-dayton-n-fairchild-to-henry-johnson">Block 2</a><a href="#block-3---state-st:-henry-johnson-to-gorham">Block 3</a><a href="#block-4---state-st:-gorham-to-gilman-broom">Block 4</a><a href="#block-5---state-st:-gilman-broom-to-n.-francis">Block 5</a><a href="#block-6---state-st:-n.-francis-to-hawthorne">Block 6</a>
+</nav>
+<main>
+  <div class="actions">
+    <a class="button" href="https://visitdowntownmadison.com/events/madison-night-market" target="_blank" rel="noopener">Official event page + map</a>
+    <a class="button secondary" href="https://www.google.com/maps/dir/Wisconsin+State+Capitol,+Madison,+WI/State+St+%26+N+Frances+St,+Madison,+WI/State+St+%26+N+Lake+St,+Madison,+WI" target="_blank" rel="noopener">Open walking route</a>
+    <a class="button" href="javascript:window.print()">Print this page</a>
+  </div>
+  <section class="mapwrap">
+    <h2>Quick map</h2>
+    <p>This embedded map centers on the Capitol Square / State Street route. Use the official event page for the vendor map, since booth placement can change.</p>
+    <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=State%20Street%20Madison%20WI%20from%20Capitol%20Square%20to%20Frances%20Street&output=embed"></iframe>
+  </section>
+  <section class="grid">
+    <section class="block" id="capital-square---e-mifflin">
+      <h2>Capital Square / E Mifflin</h2>
+      <p class="range">Booths 1-19</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#8 <a href="http://www.sunmilkshop.com/" target="_blank" rel="noopener">Sunmilk Shop</a></strong></label>
+          <div class="desc">Embroidered corded crews </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#17 <a href="http://www.mattperrinphotography.com/" target="_blank" rel="noopener">Matt Perrin Photography</a></strong></label>
+          <div class="desc">Photography </div>
+        </li></ul>
+    </section><section class="block" id="block-1---state-st:-e-mifflin-s-carroll-to-dayton-n-fairchild">
+      <h2>Block 1 - State St: E Mifflin/S Carroll to Dayton/N Fairchild</h2>
+      <p class="range">Booths 20-31 + 93-102</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#21 <a href="https://www.facebook.com/p/BD-Custom-Creations-61555215677838/" target="_blank" rel="noopener">B and D Custom Creations</a></strong></label>
+          <div class="desc">Custom creations <span class="tag">added</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#96 <a href="http://betterco.com/" target="_blank" rel="noopener">Better Co.</a></strong></label>
+          <div class="desc">Puzzles <span class="tag">corrected to 96</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#100 <a href="https://eternalbloomdesigns.etsy.com/" target="_blank" rel="noopener">Eternal Bloom Designs</a></strong></label>
+          <div class="desc">Plant / flower jewelry </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#102 <a href="http://simplylushstudio.com/" target="_blank" rel="noopener">Simply Lush Studio</a></strong></label>
+          <div class="desc">Art / studio goods </div>
+        </li></ul>
+    </section><section class="block" id="block-2---state-st:-dayton-n-fairchild-to-henry-johnson">
+      <h2>Block 2 - State St: Dayton/N Fairchild to Henry/Johnson</h2>
+      <p class="range">Booths 32-36 + 86-92</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#32 <a href="https://www.sanazarrose.com/" target="_blank" rel="noopener">Sanazar Rose</a></strong></label>
+          <div class="desc">Jewelry for Porter + Blake <span class="tag">Porter stop</span><span class="tag">Blake stop</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#90 <a href="https://www.facebook.com/amsterdammadison/" target="_blank" rel="noopener">Amsterdam Madison</a></strong></label>
+          <div class="desc">Vendor stop <span class="tag">added</span></div>
+        </li></ul>
+    </section><section class="block" id="block-3---state-st:-henry-johnson-to-gorham">
+      <h2>Block 3 - State St: Henry/Johnson to Gorham</h2>
+      <p class="range">Booths 37-42 + 82-85</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#82 <a href="https://www.donaldtoppart.com/" target="_blank" rel="noopener">Donald Topp</a></strong></label>
+          <div class="desc">Artist </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#84 <a href="http://www.greenfieldflorals.com/" target="_blank" rel="noopener">Greenfield Florals</a></strong></label>
+          <div class="desc">Jewelry / trinkets </div>
+        </li></ul>
+    </section><section class="block" id="block-4---state-st:-gorham-to-gilman-broom">
+      <h2>Block 4 - State St: Gorham to Gilman/Broom</h2>
+      <p class="range">Booths 43-47 + 79-81</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#43 <a href="http://tl-luke.com/" target="_blank" rel="noopener">TL Luke Art</a></strong></label>
+          <div class="desc">Prints, T-shirts, originals </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#45 <a href="http://borednowcreative.com/" target="_blank" rel="noopener">Bored Now Creative</a></strong></label>
+          <div class="desc">Art </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#79 <a href="http://www.haloshiatus.com/" target="_blank" rel="noopener">Halo&#x27;s Hiatus</a></strong></label>
+          <div class="desc">Jewelry <span class="tag">name fixed</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#80 <a href="http://www.jamessteeno.com/" target="_blank" rel="noopener">James Steeno Gallery</a></strong></label>
+          <div class="desc">Artwork <span class="tag">name fixed</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#81 <a href="https://www.instagram.com/softlifegoods/" target="_blank" rel="noopener">Soft Life Goods</a></strong></label>
+          <div class="desc">Cute goods <span class="tag">added</span></div>
+        </li></ul>
+    </section><section class="block" id="block-5---state-st:-gilman-broom-to-n.-francis">
+      <h2>Block 5 - State St: Gilman/Broom to N. Francis</h2>
+      <p class="range">Booths 48-57 + 68-78</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#50 <a href="http://stoutmegan.com/" target="_blank" rel="noopener">Megan Stout Illustrations</a></strong></label>
+          <div class="desc">Artwork </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#53 <a href="https://www.instagram.com/universityembroidery/" target="_blank" rel="noopener">University Embroidery</a></strong></label>
+          <div class="desc">Apparel </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#68 <a href="https://www.instagram.com/nicoles.claycottage/" target="_blank" rel="noopener">Nicole&#x27;s Clay Cottage</a></strong></label>
+          <div class="desc">Whimsical pottery </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#72 <a href="https://www.instagram.com/leaningdoodle/" target="_blank" rel="noopener">Leaning Doodle</a></strong></label>
+          <div class="desc">3D art printing - for Porter <span class="tag">Porter stop</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#74 <a href="https://www.instagram.com/jennschaller" target="_blank" rel="noopener">Jennifer Schaller Art</a></strong></label>
+          <div class="desc">Canvas paintings </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#75 <a href="https://www.instagram.com/pearl_and_jelly/" target="_blank" rel="noopener">Pearl and Jelly</a></strong></label>
+          <div class="desc">Nature-inspired jewelry <span class="tag">name fixed</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#76 <a href="http://www.redlanternleatherworks.com/" target="_blank" rel="noopener">Red Lantern Leatherworks</a></strong></label>
+          <div class="desc">Belts, cases, leather </div>
+        </li></ul>
+    </section><section class="block" id="block-6---state-st:-n.-francis-to-hawthorne">
+      <h2>Block 6 - State St: N. Francis to Hawthorne</h2>
+      <p class="range">Booths 58-67</p>
+      <ul><li>
+          <label><input type="checkbox"> <strong>#58 <a href="http://holla-threads.myshopify.com/" target="_blank" rel="noopener">Holla Threads</a></strong></label>
+          <div class="desc">Apparel </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#59 <a href="https://www.facebook.com/p/Madison-Trinket-Market-100066824657696/" target="_blank" rel="noopener">Madison Trinket Market</a></strong></label>
+          <div class="desc">Jewelry / trinkets </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#60 <a href="http://www.thisismiaomiao.com/" target="_blank" rel="noopener">Forever Yang</a></strong></label>
+          <div class="desc">Handmade lanterns, hairclips, crochet <span class="tag">added</span></div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#61 <a href="https://www.linnysartsyfingers.com/" target="_blank" rel="noopener">Linny&#x27;s Artsy Fingers</a></strong></label>
+          <div class="desc">Pearl jewelry </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#62 <a href="https://www.runicwren.com/" target="_blank" rel="noopener">Runic Wren</a></strong></label>
+          <div class="desc">Digital illustrator </div>
+        </li><li>
+          <label><input type="checkbox"> <strong>#63 <a href="http://www.jdwolfepottery.com/" target="_blank" rel="noopener">JD Wolfe Pottery</a></strong></label>
+          <div class="desc">Mushroom pottery + art </div>
+        </li></ul>
+    </section>
+  </section>
+</main>
+<footer>Built for purse-navigation, vendor ogling, and not losing the plot by Booth 63.</footer>
+</body>
+</html>
