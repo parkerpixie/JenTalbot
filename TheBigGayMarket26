@@ -1,0 +1,5603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Big Gay Pride Market Vendor Guide</title>
+  <meta name="description" content="A mobile-friendly, map-ordered vendor guide for The Big Gay Pride Market." />
+
+  <style>
+    :root {
+      --ink: #21142f;
+      --muted: #65566f;
+      --paper: #fffaff;
+      --card: rgba(255, 255, 255, 0.93);
+      --shadow: 0 14px 34px rgba(40, 14, 64, 0.14);
+
+      --rainbow: linear-gradient(
+        90deg,
+        #e40303,
+        #ff8c00,
+        #ffed00,
+        #008026,
+        #24408e,
+        #732982
+      );
+
+      --progress-pride: linear-gradient(
+        90deg,
+        #000000,
+        #784f17,
+        #e40303,
+        #ff8c00,
+        #ffed00,
+        #008026,
+        #24408e,
+        #732982,
+        #7acbf5,
+        #eaacb8,
+        #ffffff
+      );
+
+      --soft-pride: linear-gradient(135deg, #fff6ff, #f7fbff 45%, #fff8ed);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(255, 0, 128, 0.18), transparent 32%),
+        radial-gradient(circle at 90% 8%, rgba(0, 190, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 0%, rgba(255, 237, 0, 0.12), transparent 36%),
+        var(--soft-pride);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.11;
+      background: repeating-linear-gradient(
+        135deg,
+        #e40303 0 18px,
+        #ff8c00 18px 36px,
+        #ffed00 36px 54px,
+        #008026 54px 72px,
+        #24408e 72px 90px,
+        #732982 90px 108px
+      );
+    }
+
+    .top-stripe {
+      height: 14px;
+      background: var(--progress-pride);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 32px 0 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border-radius: 32px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255, 255, 255, 0.86);
+    }
+
+    .hero::after {
+      content: "BIG GAY";
+      position: absolute;
+      top: -26px;
+      right: -22px;
+      z-index: 0;
+      font-size: clamp(70px, 15vw, 168px);
+      line-height: 0.9;
+      font-weight: 1000;
+      letter-spacing: -0.08em;
+      opacity: 0.11;
+      transform: rotate(-4deg);
+      background: var(--progress-pride);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 890px;
+      font-size: clamp(2.2rem, 5.4vw, 5.05rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+    }
+
+    .rainbow-text {
+      background: var(--progress-pride);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .dek {
+      max-width: 860px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button,
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 2px solid rgba(33, 20, 47, 0.14);
+      background: #ffffff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 850;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 7px 16px rgba(40, 14, 64, 0.08);
+    }
+
+    .button.pride {
+      background: var(--progress-pride);
+      color: white;
+      border-color: transparent;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.38);
+    }
+
+    .button:hover,
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+      max-width: 860px;
+    }
+
+    .stat {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(33,20,47,.10);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .schedule-card {
+      position: relative;
+      overflow: hidden;
+      padding: 14px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 8px 18px rgba(40,14,64,.08);
+      border: 1px solid rgba(33,20,47,.10);
+    }
+
+    .schedule-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 7px;
+      background: var(--progress-pride);
+    }
+
+    .schedule-card strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 1.05rem;
+    }
+
+    .schedule-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.35;
+    }
+
+    .map-panel {
+      margin: 16px 0 18px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(33,20,47,.12);
+      box-shadow: 0 10px 24px rgba(40,14,64,.10);
+    }
+
+    .map-panel summary {
+      padding: 14px 16px;
+      cursor: pointer;
+      font-weight: 950;
+      list-style: none;
+    }
+
+    .map-panel summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .map-panel summary::after {
+      content: "↓";
+      float: right;
+      font-weight: 1000;
+    }
+
+    .map-panel[open] summary::after {
+      content: "↑";
+    }
+
+    .map-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-top: 1px solid rgba(33,20,47,.10);
+      background: white;
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 18px 0;
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 24px rgba(40, 14, 64, 0.1);
+      border: 1px solid rgba(33, 20, 47, 0.12);
+    }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .95fr .9fr .9fr auto auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    label.small {
+      display: block;
+      margin: 0 0 5px 4px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 13px;
+      border-radius: 16px;
+      border: 2px solid rgba(33, 20, 47, 0.16);
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: white;
+      border: 2px solid rgba(33, 20, 47, 0.12);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .toggle input {
+      width: auto;
+      min-height: auto;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 750;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: white;
+      border: 2px solid rgba(33, 20, 47, 0.12);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 850;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(40, 14, 64, 0.1);
+    }
+
+    .pill.active {
+      border-color: var(--cat-color);
+      background: color-mix(in srgb, var(--cat-color) 16%, white);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat-color) 18%, transparent);
+    }
+
+    .pill.active::after {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--cat-color);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 1000;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cat-color);
+      flex: 0 0 auto;
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .route a {
+      position: relative;
+      overflow: hidden;
+      min-height: 110px;
+      padding: 13px;
+      border-radius: 18px;
+      background: white;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(40, 14, 64, 0.08);
+    }
+
+    .route a::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 7px;
+      background: var(--rainbow);
+    }
+
+    .route strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      line-height: 1.15;
+    }
+
+    .route span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.25;
+    }
+
+    .route .count {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(33,20,47,.08);
+      color: var(--ink);
+      font-weight: 950;
+    }
+
+    main {
+      padding: 8px 0 60px;
+    }
+
+    .block {
+      margin: 26px 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(33, 20, 47, 0.1);
+      box-shadow: var(--shadow);
+      scroll-margin-top: 106px;
+    }
+
+    .block-head {
+      padding: 19px 22px;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72)),
+        var(--rainbow);
+      border-bottom: 1px solid rgba(33, 20, 47, 0.1);
+    }
+
+    .block-head h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      letter-spacing: -0.04em;
+    }
+
+    .block-head small {
+      font-size: .62em;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+    }
+
+    .block-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 214px;
+      padding: 16px 16px 16px 18px;
+      border-radius: 21px;
+      background: white;
+      border: 2px solid color-mix(in srgb, var(--cat-color) 38%, white);
+      box-shadow: 0 10px 24px rgba(40, 14, 64, 0.08);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      border-radius: 21px 0 0 21px;
+      background: var(--cat-color);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .booth {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      height: 36px;
+      padding: 0 10px;
+      border-radius: 14px;
+      background: var(--cat-color);
+      color: white;
+      font-weight: 1000;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,.18);
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(33,20,47,.07);
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .badge.day {
+      background: #fff3a8;
+      color: #5f4200;
+    }
+
+    .badge.no-url {
+      background: #f1eef4;
+      color: #6b6075;
+    }
+
+    .pick {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #fff3a8;
+      border: 2px solid #ffd43b;
+    }
+
+    .card h3 {
+      margin: 12px 0 6px;
+      font-size: 1.12rem;
+      line-height: 1.16;
+      letter-spacing: -0.025em;
+    }
+
+    .category-tag {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--cat-color) 14%, white);
+      color: color-mix(in srgb, var(--cat-color) 70%, black);
+      font-size: 0.78rem;
+      font-weight: 950;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .visit {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--ink);
+      font-weight: 950;
+      text-decoration: none;
+      border-bottom: 3px solid var(--cat-color);
+    }
+
+    .no-link {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--muted);
+      font-weight: 850;
+      font-size: .88rem;
+    }
+
+    .empty {
+      display: none;
+      margin: 34px 0;
+      padding: 28px;
+      border-radius: 24px;
+      background: white;
+      text-align: center;
+      color: var(--muted);
+      box-shadow: var(--shadow);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 30;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 999px;
+      background: var(--progress-pride);
+      color: white;
+      border: 0;
+      text-shadow: 0 1px 2px rgba(0,0,0,.4);
+    }
+
+    footer {
+      padding: 26px 0 44px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    @media (max-width: 1050px) {
+      .control-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .route {
+        grid-template-columns: repeat(3, minmax(150px, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding-top: 22px;
+      }
+
+      .hero {
+        padding: 22px;
+        border-radius: 26px;
+      }
+
+      .stats,
+      .schedule {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .controls {
+        position: relative;
+      }
+
+      .control-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .route {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 6px;
+      }
+
+      .route a {
+        flex: 0 0 210px;
+        scroll-snap-align: start;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        padding: 12px;
+      }
+
+      .block {
+        scroll-margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .wrap {
+        width: min(100% - 20px, 1180px);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 13vw, 3.4rem);
+      }
+
+      .dek {
+        font-size: .99rem;
+      }
+
+      .stats,
+      .schedule {
+        grid-template-columns: 1fr;
+      }
+
+      .legend {
+        max-height: 220px;
+        overflow: auto;
+        padding-right: 3px;
+      }
+
+      .card {
+        min-height: auto;
+      }
+
+      .card-top {
+        align-items: center;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .top-stripe,
+      .controls,
+      .hero-actions,
+      .route,
+      .map-panel,
+      .back-top,
+      footer {
+        display: none !important;
+      }
+
+      .wrap {
+        width: 100%;
+      }
+
+      .hero,
+      .block,
+      .card {
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 0 0 10px;
+        border: 0;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .dek {
+        margin-top: 6px;
+        font-size: 11px;
+      }
+
+      .stats,
+      .schedule {
+        display: none;
+      }
+
+      .block {
+        break-inside: avoid;
+        margin: 10px 0;
+        border: 1px solid #dddddd;
+      }
+
+      .block-head {
+        padding: 9px 12px;
+      }
+
+      .block-head h2 {
+        font-size: 16px;
+      }
+
+      .block-head p {
+        font-size: 10px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        padding: 8px;
+      }
+
+      .card {
+        min-height: auto;
+        padding: 8px 8px 8px 12px;
+        border-width: 1px;
+      }
+
+      .booth {
+        min-width: 34px;
+        height: 24px;
+        font-size: 11px;
+      }
+
+      .badge {
+        font-size: 9px;
+        min-height: 20px;
+        padding: 2px 5px;
+      }
+
+      .card h3 {
+        margin: 6px 0 4px;
+        font-size: 12px;
+      }
+
+      .category-tag {
+        margin-bottom: 4px;
+        padding: 2px 5px;
+        font-size: 9px;
+      }
+
+      .desc {
+        font-size: 9px;
+        line-height: 1.25;
+      }
+
+      .visit,
+      .no-link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+
+  <header class="wrap" id="top">
+    <section class="hero">
+      <h1>
+        Big Gay Pride Market
+        <span class="rainbow-text">Vendor Guide</span>
+      </h1>
+
+      <p class="dek">
+        A mobile-friendly, map-ordered guide for wandering The Big Gay Pride Market with Porter.
+        Start near the entrance, sweep the front hallway, then move through the main hall by booth hundreds.
+        Filter by category, search by name or booth, and mark Parker + Porter picks in phase two.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          class="button pride"
+          href="https://www.thebiggaymarketllc.com/pride-market"
+          target="_blank"
+          rel="noopener"
+        >
+          Open official event page
+        </a>
+
+        <a class="button" href="#map">
+          Open map
+        </a>
+
+        <button type="button" onclick="window.print()">
+          Print this guide
+        </button>
+      </div>
+
+      <div class="stats" aria-label="Guide stats">
+        <div class="stat">
+          <strong>244</strong>
+          <span>vendor rows</span>
+        </div>
+        <div class="stat">
+          <strong>19</strong>
+          <span>categories</span>
+        </div>
+        <div class="stat">
+          <strong>233</strong>
+          <span>links found</span>
+        </div>
+        <div class="stat">
+          <strong>11</strong>
+          <span>need links</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="schedule" aria-label="Market schedule">
+      <div class="schedule-card">
+        <strong>Friday</strong>
+        <span>5pm-10pm market open, 18+.</span>
+      </div>
+      <div class="schedule-card">
+        <strong>Saturday</strong>
+        <span>10am-5pm market open, plus youth fair, seminars, drag bingo, and shows.</span>
+      </div>
+      <div class="schedule-card">
+        <strong>Sunday</strong>
+        <span>10am-2pm market open. Masks required Sunday.</span>
+      </div>
+    </section>
+
+    <details class="map-panel" id="map">
+      <summary>Official market map: entrance, side rooms, hallway, and main hall</summary>
+      <img src="pride_market_map.png" alt="Official Big Gay Pride Market map showing entrance, side rooms, hallway booths, seating, food and drink, bathrooms, and the main vendor hall." />
+    </details>
+
+    <section class="controls" aria-label="Vendor filters">
+      <div class="control-grid">
+        <div>
+          <label class="small" for="search">Search vendors</label>
+          <input
+            id="search"
+            type="search"
+            placeholder="Search name, booth, category, description..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div>
+          <label class="small" for="category">Filter by category</label>
+          <select id="category">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="small" for="dayFilter">Day / availability</label>
+          <select id="dayFilter">
+            <option value="all">All day notes</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="small" for="sortMode">Sort / view</label>
+          <select id="sortMode">
+            <option value="walking">Walking order</option>
+            <option value="booth">Booth number</option>
+            <option value="name">Vendor A-Z</option>
+            <option value="category">Category</option>
+          </select>
+        </div>
+
+        <label class="toggle">
+          <input id="pickOnly" type="checkbox" />
+          ⭐ Picks
+        </label>
+
+        <button type="button" id="clearFilters">
+          Clear filters
+        </button>
+      </div>
+
+      <div class="result-line">
+        <span id="resultCount">Loading vendors...</span>
+        <span>Tip: category pills stack with the dropdown.</span>
+      </div>
+
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <nav class="route" id="route" aria-label="Market walking route quick links"></nav>
+  </header>
+
+  <main class="wrap" id="guide"></main>
+
+  <section class="wrap empty" id="empty">
+    No vendors match that filter combo. The rainbow sieve got too specific.
+  </section>
+
+  <button class="back-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+  <footer class="wrap">
+    Built from the attendee guide, map, and Jen/Parker's vendor research. Not an official event page, just a very useful little rainbow compass.
+  </footer>
+
+  <script>
+    const CATEGORY_COLORS = {
+  "Apparel & Textiles": "#e40303",
+  "Art & Illustration": "#ff8c00",
+  "Books & Paper Goods": "#c2185b",
+  "Candles & Home Fragrance": "#f77f00",
+  "Community & Sponsors": "#24408e",
+  "Fiber Art & Crochet": "#7b2cbf",
+  "Food & Sweets": "#008026",
+  "Home & Self-Care": "#6a994e",
+  "Home Goods": "#b08968",
+  "Jewelry & Accessories": "#d000ff",
+  "Other / Needs Research": "#555555",
+  "Pet Goods": "#00a6fb",
+  "Photography & Services": "#118ab2",
+  "Plants & Florals": "#2a9d8f",
+  "Pottery & Ceramics": "#00b4d8",
+  "Spiritual / Occult": "#480ca8",
+  "Toys & Cute Stuff": "#ff5da2",
+  "Wigs / Cosplay": "#7209b7",
+  "Woodworking": "#784f17"
+};
+
+    const BLOCKS = [
+  {
+    "id": "entrance",
+    "title": "Entrance + Side Rooms",
+    "range": "Booths 24-38",
+    "description": "Start here after the welcome table. This area is near games/crafts, M1, M5, M6, and the entrance-side lobby booths.",
+    "mapNote": "Orientation zone",
+    "count": 13
+  },
+  {
+    "id": "front-hall",
+    "title": "Front Hallway + Photo Booth Row",
+    "range": "Booths 1-23",
+    "description": "A good first sweep before diving into the main hall. Includes the lower/front hallway area near the photo booth path.",
+    "mapNote": "Lower hallway",
+    "count": 20
+  },
+  {
+    "id": "main-100",
+    "title": "Main Hall: 100s",
+    "range": "Booths 100-199",
+    "description": "Entrance-side stretch of the main vendor hall.",
+    "mapNote": "Main hall",
+    "count": 25
+  },
+  {
+    "id": "main-200",
+    "title": "Main Hall: 200s",
+    "range": "Booths 200-299",
+    "description": "Continue across the main hall vendor grid.",
+    "mapNote": "Main hall",
+    "count": 22
+  },
+  {
+    "id": "main-300",
+    "title": "Main Hall: 300s",
+    "range": "Booths 300-399",
+    "description": "Mid-market booth cluster with plenty of art, ceramics, community tables, and shiny distractions.",
+    "mapNote": "Main hall",
+    "count": 26
+  },
+  {
+    "id": "main-400",
+    "title": "Main Hall: 400s",
+    "range": "Booths 400-499",
+    "description": "Middle of the main hall. Prime browsing territory.",
+    "mapNote": "Main hall",
+    "count": 25
+  },
+  {
+    "id": "main-500",
+    "title": "Main Hall: 500s",
+    "range": "Booths 500-599",
+    "description": "A very art-heavy lane, also known as the danger zone for wallet goblins.",
+    "mapNote": "Main hall",
+    "count": 26
+  },
+  {
+    "id": "main-600",
+    "title": "Main Hall: 600s",
+    "range": "Booths 600-699",
+    "description": "Main hall booths with a strong handmade/cute/ceramic energy.",
+    "mapNote": "Main hall",
+    "count": 27
+  },
+  {
+    "id": "main-700",
+    "title": "Main Hall: 700s",
+    "range": "Booths 700-799",
+    "description": "Further across the main hall grid, still following booth numbers instead of chaos gremlins.",
+    "mapNote": "Main hall",
+    "count": 26
+  },
+  {
+    "id": "main-800",
+    "title": "Main Hall: 800s",
+    "range": "Booths 800-899",
+    "description": "The far-side stretch of the main hall. This is the last big sweep in walking-order mode.",
+    "mapNote": "Far side",
+    "count": 34
+  }
+];
+
+    const VENDORS = [
+  {
+    "booth": 24,
+    "boothLabel": "#24",
+    "name": "Free Mom Hugs",
+    "url": "https://freemomhugs.org/index.cfm?nodeID=50",
+    "category": "Community & Sponsors",
+    "description": "Free Mom Hugs is a nationwide non-profit network of parents and allies offering unconditional love and support to the LGBTQ+ community.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 10,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 25,
+    "boothLabel": "#25",
+    "name": "Planned Parenthood",
+    "url": "https://www.plannedparenthood.org/",
+    "category": "Community & Sponsors",
+    "description": "Planned Parenthood Federation of America is a nonprofit organization that provides sexual health care in the United States and globally.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 204,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 26,
+    "boothLabel": "#26",
+    "name": "Madison Area DSA",
+    "url": "https://dsamadison.org/",
+    "category": "Community & Sponsors",
+    "description": "Madison Area Democratic Socialist of America",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors",
+    "confidence": "High",
+    "sourceOrder": 83,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 27,
+    "boothLabel": "#27",
+    "name": "Trans Resistance Action Commitee",
+    "url": "https://madisontrac.org/",
+    "category": "Community & Sponsors",
+    "description": "Community organization, sponsor, service, or resource table; verify details.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 188,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 29,
+    "boothLabel": "#29",
+    "name": "WWBIC",
+    "url": "https://www.wwbic.com/",
+    "category": "Community & Sponsors",
+    "description": "Wisconsin Women's Business Initiative Corporations",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors",
+    "confidence": "High",
+    "sourceOrder": 236,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 30,
+    "boothLabel": "#30",
+    "name": "Pride Theater Productions",
+    "url": "https://www.alfiejamesproductions.com/pride-theatre-productions",
+    "category": "Community & Sponsors",
+    "description": "Pride Theatre Productions is an All LGBTQIA+ community in Janesville, WI. They produce fully diverse shows that explore the resiliency, rebellion, and representation of the Queer community.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 216,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 31,
+    "boothLabel": "#31",
+    "name": "Community Pharmacy",
+    "url": "https://www.communitypharmacy.coop/",
+    "category": "Community & Sponsors",
+    "description": "Community Pharmacy Cooperative was established in 1972 by a group of radical pharmacy students at UW Madison. Since then, they have been dedicated to serving the Madison community through equity and inclusion.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; pets/animals; community",
+    "confidence": "High",
+    "sourceOrder": 9,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 33,
+    "boothLabel": "#33",
+    "name": "Badgerland Pride Softball",
+    "url": "https://www.badgerlandpridesoftball.org/",
+    "category": "Community & Sponsors",
+    "description": "LGBTQ social softball league and community organization.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 80,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 34,
+    "boothLabel": "#34",
+    "name": "Rugby - WWRFC",
+    "url": "https://wwrfc.com/",
+    "category": "Community & Sponsors",
+    "description": "Community organization, sponsor, service, or resource table; verify details.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 252,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 35,
+    "boothLabel": "#35",
+    "name": "Rugby - Minotaurs",
+    "url": "https://madisonminotaurs.com/",
+    "category": "Community & Sponsors",
+    "description": "Community organization, sponsor, service, or resource table; verify details.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 250,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 36,
+    "boothLabel": "#36",
+    "name": "Madison Gay Hockey Association",
+    "url": "https://www.madisongayhockey.org",
+    "category": "Community & Sponsors",
+    "description": "Silver sponsor listed on the official Pride Market page.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 87,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 37,
+    "boothLabel": "#37",
+    "name": "Bujinkan Madison Dojo",
+    "url": "https://www.bujinkanmadison.com/",
+    "category": "Community & Sponsors",
+    "description": "We are a group of individuals committed to studying Bujinkan Budō Taijutsu as taught by Soke Masaaki Hatsumi of Nodashi Japan.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors",
+    "confidence": "High",
+    "sourceOrder": 132,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 38,
+    "boothLabel": "#38",
+    "name": "Professional Resume Headshots",
+    "url": "",
+    "category": "Photography & Services",
+    "description": "Professional/headshot service listed by name; verify details.",
+    "day": "Saturday only",
+    "status": "Needs URL",
+    "tags": "Photography & Services",
+    "confidence": "High",
+    "sourceOrder": 225,
+    "block": "entrance",
+    "blockOrder": 1,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 1,
+    "boothLabel": "#1",
+    "name": "Pixie Paints Face Painting",
+    "url": "https://pixiepaintsmadison.com/",
+    "category": "Photography & Services",
+    "description": "🖌️Pixie Paints Face Painting & Body Art transforms guests of all ages into whimsical creatures, delicate florals, fantasy characters, and sparkling fairies! Only vending on Friday and Saturday!",
+    "day": "Friday + Saturday only",
+    "status": "URL Found",
+    "tags": "Photography & Services; art; self-care; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 201,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 2,
+    "boothLabel": "#2",
+    "name": "gebree",
+    "url": "https://www.instagram.com/p/DZDQCITEeD1/",
+    "category": "Art & Illustration",
+    "description": "🪻 Gebree loves to make colorful and expressive illustrations that translate the whimsical in the ordinary and invoke the effervescence of daydreams. Who knows what wonder you'll find?",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 22,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 3,
+    "boothLabel": "#3",
+    "name": "Squigglebee Studio",
+    "url": "https://www.instagram.com/p/DSAwIvVEpNQ/",
+    "category": "Pottery & Ceramics",
+    "description": "🥤 Squigglebee Studio is a small batch ceramics studio based in Teejop/Madison, WI. They create colorful, playful ceramics, primarily using slip cast molds from the 1960's and 1970's to bring new life to vintage forms.",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 190,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 4,
+    "boothLabel": "#4",
+    "name": "Mandysaurus Arts",
+    "url": "www.etsy.com/shop/MandysaurusArts",
+    "category": "Art & Illustration",
+    "description": "🦖Mandysaurus Arts creates dinosaur themed arts and crafts. Dinosaurs are for everyone, regardless of age, gender, or WHATEVER!",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 107,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 6,
+    "boothLabel": "#6",
+    "name": "Trans Medical Mutual Aid",
+    "url": "https://www.transfolx.com/",
+    "category": "Community & Sponsors",
+    "description": "🏳️‍⚧️Trans Medical Mutual Aid provides resources, funding, and supplies to the trans community of Madison and Wisconsin at large. They specialize in education about gender affirming surgery - by the trans community, for the trans community 🏳️‍⚧️",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; pets/animals; community",
+    "confidence": "High",
+    "sourceOrder": 185,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 7,
+    "boothLabel": "#7",
+    "name": "StageQ",
+    "url": "https://www.stageq.org",
+    "category": "Community & Sponsors",
+    "description": "StageQ is a founding member of the National Queer Theatre Alliance and is a resident of the Bartell Community Theatre located just a block away from the Wisconsin State Capital. StageQ is dedicated to providing a safe space for queer and allied artist, promoting and celebrating the Madison LGBTQ+ community, and providing a platform where queer people of all ages can see their stores told on strage.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; art; pets/animals; community",
+    "confidence": "High",
+    "sourceOrder": 196,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 8,
+    "boothLabel": "#8",
+    "name": "Renovation Sells",
+    "url": "https://renovationsells.com",
+    "category": "Community & Sponsors",
+    "description": "Silver sponsor listed on the official Pride Market page.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 237,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 9,
+    "boothLabel": "#9",
+    "name": "Forward / Rally Madison FC",
+    "url": "https://www.forwardmadisonfc.com ; https://www.rallymadisonfc.com",
+    "category": "Community & Sponsors",
+    "description": "Forward Madison FC and Rally Madison FC are listed as sponsors/collaborators on the official event materials.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 2,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 10,
+    "boothLabel": "#10",
+    "name": "Asher Masino Homes",
+    "url": "https://ashermasinohomes.com/",
+    "category": "Community & Sponsors",
+    "description": "Full-service real estate support for buying or selling, focused on trustworthy expert advocacy.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors",
+    "confidence": "High",
+    "sourceOrder": 52,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 11,
+    "boothLabel": "#11",
+    "name": "Our Lives",
+    "url": "https://ourliveswisconsin.com",
+    "category": "Community & Sponsors",
+    "description": "Founded in 2007, Our Lives manazine has grown to become Wicsconsin's main source for LGBTQ news. The publication exists in both print and online formats and features content that highlights the depth and diversity of people living within the LGBTQ Community here. Headquarted in Madison, Wisconsin, the magazine has its closest ties with the capital city, but prioritizes content and readers from all corners of the state.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; art; books/comics; pets/animals; community",
+    "confidence": "High",
+    "sourceOrder": 186,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 12,
+    "boothLabel": "#12",
+    "name": "Universal Windows Direct",
+    "url": "https://get.universalwindowsdirect.com",
+    "category": "Community & Sponsors",
+    "description": "Silver sponsor listed on the official Pride Market page.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 206,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 13,
+    "boothLabel": "#13",
+    "name": "Millie of the Lake",
+    "url": "https://www.instagram.com/millie_ofthelake/",
+    "category": "Wigs / Cosplay",
+    "description": "🧜‍♀️Millie of the Lake is a merfolk scalesmith providing one of a kind custom swimmable resin scales and matching merfolk accessories for all your whimsical merfolk needs!",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Wigs / Cosplay",
+    "confidence": "High",
+    "sourceOrder": 139,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 15,
+    "boothLabel": "#15",
+    "name": "DizzyCat Crafts",
+    "url": "https://www.dizzycat.biz/animals-new",
+    "category": "Pet Goods",
+    "description": "🧶 DizzyCat Crafts makes custom unique crochet pieces, wearable and otherwise! Grab your next accent piece from them 🤠",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Pet Goods; crochet/fiber; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 105,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 16,
+    "boothLabel": "#16",
+    "name": "By Morgan Mae Photography",
+    "url": "http://www.morganmaephoto.com/",
+    "category": "Photography & Services",
+    "description": "Photographer",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Photography & Services",
+    "confidence": "High",
+    "sourceOrder": 148,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 17,
+    "boothLabel": "#17",
+    "name": "The Little Dreamscape",
+    "url": "",
+    "category": "Home Goods",
+    "description": "🌟The Little Dreamscape creates whimsical dopamine art and decor that honors living expressively and embracing the little things. Interactive pieces and unique designs can be found here!",
+    "day": "Saturday only",
+    "status": "Needs URL",
+    "tags": "Home Goods; art; home/decor",
+    "confidence": "Medium",
+    "sourceOrder": 259,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 18,
+    "boothLabel": "#18",
+    "name": "Lexi's Little Luxuries",
+    "url": "https://www.instagram.com/lexislittleluxuries/",
+    "category": "Jewelry & Accessories",
+    "description": "✨Lexi’s Little Luxuries is a handmade bracelet, bookmark, and sticker business inspired by a creative 12-year-old with a big heart and a desire to change the world. Each piece is made with love to spread joy, kindness, and inclusivity, and to remind you to be brave, be kind, and be YOU.",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art; jewelry; books/comics",
+    "confidence": "High",
+    "sourceOrder": 47,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 19,
+    "boothLabel": "#19",
+    "name": "Joyeful Enterprises",
+    "url": "https://joyfulenterprisesllc.com/",
+    "category": "Books & Paper Goods",
+    "description": "🏳️‍🌈 At Joyeful Enterprises, Kathy crafts stories where fiction meets lived experience, illuminating the emotional depth of queer history. Their mission is to connect readers with narratives of love, identity, and resilience that honor our shared community.",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; community",
+    "confidence": "High",
+    "sourceOrder": 150,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 20,
+    "boothLabel": "#20",
+    "name": "Happily Bored",
+    "url": "",
+    "category": "Toys & Cute Stuff",
+    "description": "✨ Happily Bored makes all sorts of handmade items; from felt creatures and keychains to suncatchers and jewelry, they dabble in it all!",
+    "day": "Saturday only",
+    "status": "Needs URL",
+    "tags": "Toys & Cute Stuff; jewelry; home/decor; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 50,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 21,
+    "boothLabel": "#21",
+    "name": "aarochi",
+    "url": "https://www.instagram.com/p/DYn-pvrkfLf/",
+    "category": "Art & Illustration",
+    "description": "🍄 aarocchi is a traditional artist who loves comics, women, and all things cute! They just graduated from UW and are looking forward to trying out vending.",
+    "day": "Saturday only",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; books/comics",
+    "confidence": "High",
+    "sourceOrder": 8,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 23,
+    "boothLabel": "#23",
+    "name": "Integrated Counseling",
+    "url": "https://www.integratedcounselingllc.com",
+    "category": "Community & Sponsors",
+    "description": "Silver sponsor listed on the official Pride Market page.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 114,
+    "block": "front-hall",
+    "blockOrder": 2,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 102,
+    "boothLabel": "#102",
+    "name": "Love U Candle",
+    "url": "https://loveucandle.com/",
+    "category": "Candles & Home Fragrance",
+    "description": "🕯️ Love U Candle designs and hand makes every candle with love and care in small batches. Using fragrance oils inspired by Asian flavors, they are eager to make affordable candles that not only smell amazing but also look fun and cute 🩷",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Candles & Home Fragrance; home/decor",
+    "confidence": "High",
+    "sourceOrder": 67,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 104,
+    "boothLabel": "#104",
+    "name": "Lizbie Cafe",
+    "url": "https://lizbiecafe.com",
+    "category": "Food & Sweets",
+    "description": "💛 Lizbie Cafe is a small shop from Madison, WI that specializes in creating unique items focused around nostalgia, adorable animals, comfort food and things that will make you smile.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 59,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 107,
+    "boothLabel": "#107",
+    "name": "Gradient Winds",
+    "url": "https://www.gradientwinds.com/",
+    "category": "Art & Illustration",
+    "description": "💚 Gradient Winds is a Wisconsin-based print shop that focuses on pop culture and music-based creations that are full of color and life. They believe in community first - each project is printed and cut locally!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; community",
+    "confidence": "High",
+    "sourceOrder": 42,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 107,
+    "boothLabel": "#107",
+    "name": "Samhain Press",
+    "url": "https://www.samhainpress.com/",
+    "category": "Jewelry & Accessories",
+    "description": "🌿 SamHain Press makes colorful, size-inclusive jewelry, recycles old books into accessories, and celebrates the natural world by including celestial themes, scientific illustrations, and organic elements into her work.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art; jewelry; books/comics",
+    "confidence": "Medium",
+    "sourceOrder": 260,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 108,
+    "boothLabel": "#108",
+    "name": "Soulful Beauty",
+    "url": "https://soulfulbeautyllc.glossgenius.com/",
+    "category": "Home & Self-Care",
+    "description": "🌱 Soulful Beauty was born from the artist's passion for art, joy and self acceptance. Explore the natural world through their eyes!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; art",
+    "confidence": "High",
+    "sourceOrder": 175,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 109,
+    "boothLabel": "#109",
+    "name": "Atlas Ceramics",
+    "url": "https://www.atlas-ceramics.com/about",
+    "category": "Pottery & Ceramics",
+    "description": "🌎 Atlas Ceramics produces hand crafted ceramics with inspiration from nature and your favorite sci-fi books. Each pot is thrown on the wheel and sculpted into a one-of-one functional piece!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics; books/comics",
+    "confidence": "High",
+    "sourceOrder": 56,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 110,
+    "boothLabel": "#110",
+    "name": "Bkay Artworks",
+    "url": "https://www.bkayartsworks.com/portfolio",
+    "category": "Art & Illustration",
+    "description": "💚BKay Artworks crafts dopamine decor that anyone can enjoy. Created with a variety of different techniques and materials, they have a whole host of fun handmade things to choose from!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; home/decor",
+    "confidence": "High",
+    "sourceOrder": 124,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 111,
+    "boothLabel": "#111",
+    "name": "Avyda Creations",
+    "url": "https://avydacreations.com/",
+    "category": "Fiber Art & Crochet",
+    "description": "Queer-owned handmade crochet shop with whimsical one-of-a-kind pieces, from amigurumi to pride blankets.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 64,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 113,
+    "boothLabel": "#113",
+    "name": "Remi Rose Critters",
+    "url": "https://www.etsy.com/shop/RemiRoseCritters",
+    "category": "Toys & Cute Stuff",
+    "description": "Polymer clay and resin critters, pins, and more",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff; ceramics; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 234,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 114,
+    "boothLabel": "#114",
+    "name": "Little Panda Art Studio",
+    "url": "https://littlepandaartstudio.square.site/",
+    "category": "Art & Illustration",
+    "description": "🐼 Little Panda Art Studio is your destination for nerdy art! With cheeky stickers & prints to intricately hand-cut 3D trading cards, they are excited to create uniquely fun art for you.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 55,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 115,
+    "boothLabel": "#115",
+    "name": "Babirousa",
+    "url": "https://www.instagram.com/babirousa/?hl=en",
+    "category": "Art & Illustration",
+    "description": "Original illustration and art with a clear no-AI stance.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 72,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 116,
+    "boothLabel": "#116",
+    "name": "Wandering Willow Creations",
+    "url": "https://wanderingwillowcreations.bigcartel.com/",
+    "category": "Spiritual / Occult",
+    "description": "🌿 Wandering Willow has expanded their magical goods - with a city witch catering to your needs, you're all set to weave your next ward.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; witchy; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 212,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 117,
+    "boothLabel": "#117",
+    "name": "Jewelry Felt Forge",
+    "url": "https://www.instagram.com/jewelryfeltforge/",
+    "category": "Jewelry & Accessories",
+    "description": "🍒 Jewelry Felt Forge is a Black, queer-owned business that combines fiberwork and metalsmithing to create jewelry and accessories to express your authentic self!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 142,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 119,
+    "boothLabel": "#119",
+    "name": "Bedheadbot",
+    "url": "",
+    "category": "Jewelry & Accessories",
+    "description": "💛 Bedheadbot is a queer two-spirit artist with an interest in colorful jewelry for all, old web aesthetics and cartoons, and an appreciation for silly little guys. If you have similar interests, or are maybe a bit chronically online, check out their work!",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Jewelry & Accessories; art; jewelry",
+    "confidence": "Medium",
+    "sourceOrder": 104,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 120,
+    "boothLabel": "#120",
+    "name": "Leon Doodlez",
+    "url": "https://www.leondoodlezart.com/",
+    "category": "Art & Illustration",
+    "description": "🖌️ Leon is based out of the NorthWest Suburbs of Chicago. They enjoy creating in the fantasy genre and play TTRPG's!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration",
+    "confidence": "High",
+    "sourceOrder": 39,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 121,
+    "boothLabel": "#121",
+    "name": "Honeycomb Collective",
+    "url": "https://www.honeycomb.co/",
+    "category": "Spiritual / Occult",
+    "description": "Honeycomb Collective personalized astrological almanacs, planners, and calendars.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult",
+    "confidence": "High",
+    "sourceOrder": 102,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 122,
+    "boothLabel": "#122",
+    "name": "HOMOCATS",
+    "url": "https://www.homocats.com/",
+    "category": "Pet Goods",
+    "description": "🙀 Created by Brooklyn artist J. Morrison, HOMOCATS is a visual art and zine publication connecting the modern popularity of cats with social politics. F*ck Tr*mp, cuddle cats!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pet Goods; art; books/comics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 94,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 123,
+    "boothLabel": "#123",
+    "name": "Cornutus Designs",
+    "url": "https://www.instagram.com/p/DZh7MbfEXjY/",
+    "category": "Art & Illustration",
+    "description": "🗡️ Cornutus Designs is a one guy operation turning thrifted clothing and fabric scraps into whimsical and queer apparel through hand-carved block printing.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; apparel",
+    "confidence": "High",
+    "sourceOrder": 21,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 125,
+    "boothLabel": "#125",
+    "name": "Spazzi and Inu'O",
+    "url": "https://www.instagram.com/p/DPCFyQRDjc6/",
+    "category": "Art & Illustration",
+    "description": "Spazzi & Inu’O are best friends who share a passion for art and stories. They are mostly original character artists and want to share their original stories with others.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 178,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 126,
+    "boothLabel": "#126",
+    "name": "Fauxfetti Cake Club",
+    "url": "https://www.instagram.com/fauxfetticakeclub/",
+    "category": "Food & Sweets",
+    "description": "🍰 Fauxfetti carries fun, fake, and absolutely silly cake art designed to add dopamine to your home. They will certainly have a statement piece for you!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; art",
+    "confidence": "High",
+    "sourceOrder": 153,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 127,
+    "boothLabel": "#127",
+    "name": "Ringo Rugs",
+    "url": "https://www.instagram.com/ringorugswi/",
+    "category": "Home Goods",
+    "description": "🧶 Ringo Rugs is all about spreading joy with handmade rugs! They especially love making custom rugs that folks request!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home Goods; home/decor",
+    "confidence": "High",
+    "sourceOrder": 240,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 128,
+    "boothLabel": "#128",
+    "name": "Toadstool Treasures",
+    "url": "https://www.etsy.com/shop/TdstlTreasuresCo",
+    "category": "Jewelry & Accessories",
+    "description": "Jewely and Crafts and Windcatches. Wire and beads",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 173,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 129,
+    "boothLabel": "#129",
+    "name": "Crossing Raindrops",
+    "url": "https://www.facebook.com/crossingraindrops/",
+    "category": "Art & Illustration",
+    "description": "Delightfully Spooky with a Side of Flowers Freelance Artist Alumni of Milwaukee Institute of Art",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 53,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 130,
+    "boothLabel": "#130",
+    "name": "SweeToothGhost",
+    "url": "https://www.sweetoothghost.com/",
+    "category": "Art & Illustration",
+    "description": "🍎 SweeToothGhost is run by a queer artist based out of Chicago. She makes art that feels dazzling and moving to connect with people around her.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 223,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 133,
+    "boothLabel": "#133",
+    "name": "Paige Boy Studio",
+    "url": "https://www.paige-boy.com/",
+    "category": "Art & Illustration",
+    "description": "🩵 Paige Boy Studio is a married, queer duo who creates unique pieces of stained glass artwork, all featuring their original designs and rooted in queer themes and tongue-in-cheek humor 👅",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; home/decor",
+    "confidence": "High",
+    "sourceOrder": 192,
+    "block": "main-100",
+    "blockOrder": 3,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 202,
+    "boothLabel": "#202",
+    "name": "Tori's Trinkets",
+    "url": "https://www.toristrinketshop.com",
+    "category": "Jewelry & Accessories",
+    "description": "🌙 Tori’s Trinkets says it all in the name! Wear your newest favorite trinket as a statement jewelry piece. Enjoy handmade hypoallergenic modern statement jewelry!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 179,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 203,
+    "boothLabel": "#203",
+    "name": "Soft Life Goods",
+    "url": "https://softlifegoods.com/",
+    "category": "Home & Self-Care",
+    "description": "🍃 Soft Life Goods creates handmade reusable goods and ceramics using mostly natural materials. They are designed to make everyday routines softer, more sustainable, and a little more special!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; ceramics",
+    "confidence": "Medium",
+    "sourceOrder": 172,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 204,
+    "boothLabel": "#204",
+    "name": "Simply Lush Studio",
+    "url": "http://simplylushstudio.com",
+    "category": "Pottery & Ceramics",
+    "description": "Earthy ceramics, critters, mugs, linocut prints and build-your-own print station.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 274,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 205,
+    "boothLabel": "#205",
+    "name": "Chapter and Charm",
+    "url": "https://www.chapterandcharmco.com/",
+    "category": "Books & Paper Goods",
+    "description": "📗 Chapter & Charm Co. is a queer, women-owned indie bookstore & dirty soda bar located in the small town of Waterloo, WI, working to bring communities together through a shared love of storytelling.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; food/drink; books/comics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 164,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 209,
+    "boothLabel": "#209",
+    "name": "Land of Alpacas",
+    "url": "",
+    "category": "Pet Goods",
+    "description": "🦙 Land of Alpacas sells USA-made alpaca socks and other apparel! Cuddle with a super soft alpaca stuffie, or buy your feet a hug 🤗",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Pet Goods; apparel",
+    "confidence": "High",
+    "sourceOrder": 27,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 210,
+    "boothLabel": "#210",
+    "name": "JubiArt",
+    "url": "https://jubiartdesign.com/",
+    "category": "Art & Illustration",
+    "description": "✏️ JubiArtDesign specializes in stationery, art prints and paper goods! Cute, relatable, funny, but also usable products! Inspired by video games, cartoons, and anime 💥",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 154,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 211,
+    "boothLabel": "#211",
+    "name": "Sift and Winnow",
+    "url": "https://www.siftandwinnow.com/",
+    "category": "Home Goods",
+    "description": "Mount Horeb's locally owned gift shop and atelier.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home Goods",
+    "confidence": "Medium",
+    "sourceOrder": 270,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 214,
+    "boothLabel": "#214",
+    "name": "TL Luke Art",
+    "url": "http://tlukeart.com/",
+    "category": "Art & Illustration",
+    "description": "🐦‍⬛ T.L. Luke makes comically helpful, hand illustrated goodies and gifts that celebrate Wisconsin's unique ecology, perfect for the nature lovers in your life!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; books/comics",
+    "confidence": "High",
+    "sourceOrder": 170,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 215,
+    "boothLabel": "#215",
+    "name": "One Eyed Cat Crafts",
+    "url": "https://www.etsy.com/shop/OneEyedCatCrafts",
+    "category": "Pottery & Ceramics",
+    "description": "🥤 One Eyed Cat Crafts puts the “Fun” in “Functional Ceramics”! From unique off-kilter statues to sturdy and stylish dishware, One Eyed Cat will certainly provide 💀",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 177,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 216,
+    "boothLabel": "#216",
+    "name": "Em the Jackalope",
+    "url": "https://www.emthejackalope.com/",
+    "category": "Apparel & Textiles",
+    "description": "🛼 Em the Jackalope is an Appleton artist who specializes in hand printed shirts, small batch prints and stickers, and whimsical illustrations of animals!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; art; apparel; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 129,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 217,
+    "boothLabel": "#217",
+    "name": "Lemongrass Art",
+    "url": "https://www.instagram.com/lemongrassartcaricature/",
+    "category": "Art & Illustration",
+    "description": "WI-based caricature artist helping people create memories at arts & craft fairs, music festivals and special events across the Midwest!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 35,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 220,
+    "boothLabel": "#220",
+    "name": "Hawburns Studio",
+    "url": "https://www.etsy.com/shop/HawburnsStudio",
+    "category": "Art & Illustration",
+    "description": "🐻 Hawburns Studio specializes in all things cute, sassy, inclusive, and spooky. Jess is a digital artist who draws and designs all the products, including buttons, magnets, keychains, stickers, stationary, suncatchers, and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; home/decor; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 58,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 221,
+    "boothLabel": "#221",
+    "name": "Blacky Cat Creations",
+    "url": "https://www.etsy.com/shop/BlackyCatCreations",
+    "category": "Pet Goods",
+    "description": "🐈‍⬛ Blacky Cat Creations makes fabulous and affordable accessories, from hand knit creations to fandom jewelry. They have a wide range of things from the cuddly to the spooky!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pet Goods; jewelry; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 128,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 222,
+    "boothLabel": "#222",
+    "name": "Scott by Design",
+    "url": "https://www.facebook.com/scottbydesign915/",
+    "category": "Art & Illustration",
+    "description": "We are a queer, ND🧠 couple from Madison. We channel our creative/emotional energy into making art that is inspiring, uplifting, affirming, accessible, eco-conscious, whimsical, and full of color. We aim to live and create as authentically as possible. 🌈",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 264,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 223,
+    "boothLabel": "#223",
+    "name": "Birds of a Sweater",
+    "url": "https://www.birdsofasweater.com/",
+    "category": "Apparel & Textiles",
+    "description": "🐦 Birds of a Sweater makes handmade, eco-friendly cat toys that cats love! Nothing says “cozy” like your cat attacking their new favorite toy while you have a moment of peace on the couch 💕",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 120,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 227,
+    "boothLabel": "#227",
+    "name": "Dr. Lollipop",
+    "url": "https://www.instagram.com/p/C_vpCORvBMm/",
+    "category": "Books & Paper Goods",
+    "description": "🕸️ Dr. Lollipop MD is a spooky husband-wide comic duo. They have created a series of comics highlighting social issues and everyday horror in fantasy settings 📖",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; books/comics",
+    "confidence": "High",
+    "sourceOrder": 121,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 227,
+    "boothLabel": "#227",
+    "name": "Sadie's Sticky Fingers",
+    "url": "https://sadies-sticky-fingers.square.site/",
+    "category": "Food & Sweets",
+    "description": "🍰 Sadie's Sticky Fingers uses recipes passed down from her mother! Her goal is for every baked good to look, feel, and taste like someone's eating it in their mother's kitchen.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; food/drink",
+    "confidence": "High",
+    "sourceOrder": 256,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 228,
+    "boothLabel": "#228",
+    "name": "The Toybox",
+    "url": "",
+    "category": "Toys & Cute Stuff",
+    "description": "🧸 The Toybox is all about self expression and creating things that spark joy for all ages and backgrounds. Get your paws on something soft!",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Toys & Cute Stuff",
+    "confidence": "High",
+    "sourceOrder": 269,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 229,
+    "boothLabel": "#229",
+    "name": "Samsconsin Art",
+    "url": "https://www.samsconsin.com/",
+    "category": "Art & Illustration",
+    "description": "🌈 Samsconsin Art creates intuitive, often abstract, watercolor art. Inspired by her mental health journey and a desire to embrace imperfection, her art features reminders of self-love, bright colors, Wisconsin-isms and a bit of sass.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 262,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 230,
+    "boothLabel": "#230",
+    "name": "Kailee Rosen",
+    "url": "https://www.kaileerosen.com/",
+    "category": "Art & Illustration",
+    "description": "🚀 Kailee makes bright and colorful illustrations that emphasize her love of art and media. On her table, you will find prints, stickers, pins and keychains!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 158,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 231,
+    "boothLabel": "#231",
+    "name": "Slower Drawings",
+    "url": "https://www.etsy.com/shop/slowerdrawings",
+    "category": "Art & Illustration",
+    "description": "🐇Using repurposed materials, Fern from Slower Drawings create handmade art prints and fiber art as well as hand-beaded bracelets. Their work tackles themes of queerness, social justice, and appreciating the natural world.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; jewelry; crochet/fiber",
+    "confidence": "Medium",
+    "sourceOrder": 169,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 232,
+    "boothLabel": "#232",
+    "name": "PolyPaws Ensembles LLC",
+    "url": "https://www.etsy.com/shop/PolyPawsEnsembles",
+    "category": "Wigs / Cosplay",
+    "description": "🦊PolyPaws Ensemble offers goods for furries of all species! From Boopable Nose to Beanie Toes, check out their handmade cosplay and costume apparel and accessories.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Wigs / Cosplay; apparel",
+    "confidence": "Medium",
+    "sourceOrder": 210,
+    "block": "main-200",
+    "blockOrder": 4,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 302,
+    "boothLabel": "#302",
+    "name": "WILGBT Chamber of Commerce",
+    "url": "https://wislgbtchamber.com",
+    "category": "Community & Sponsors",
+    "description": "Presenting sponsor for the 2026 Pride Market.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Community & Sponsors; community",
+    "confidence": "High",
+    "sourceOrder": 218,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 303,
+    "boothLabel": "#303",
+    "name": "Shawpawprints Watercolor",
+    "url": "https://www.etsy.com/shop/ShawPawPrints",
+    "category": "Art & Illustration",
+    "description": "🌳 Shawpawprints Watercolor creates original watercolor pieces and replicates her work on greeting cards, stickers, and more. From fantasy to forests, she has a bit of everything!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 266,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 304,
+    "boothLabel": "#304",
+    "name": "Dee Croaker Artistry",
+    "url": "https://www.deecroakerartistry.com/product-page/spiral-bracelet-fire-colors",
+    "category": "Art & Illustration",
+    "description": "💚 From Dee Croaker: “Boozhoo, my name is Dee “White Wolf” Croaker, member of the Leech Lake Band of Ojibwe, Crane Clan. I love to combine techniques and beads found across Turtle Island and through the generations to create unique one of a kind collections and pieces that tell a story.”",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; jewelry",
+    "confidence": "High",
+    "sourceOrder": 85,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 305,
+    "boothLabel": "#305",
+    "name": "Rat Brats",
+    "url": "https://www.etsy.com/shop/ratbrats",
+    "category": "Art & Illustration",
+    "description": "🐀 Rat Brats is all about creating fun & funky art in the hopes that it connects with folks of all kinds, especially fellow weirdos! They specialize in polymer clay pals, mini portrait magnets, enamel pins, stickers, linocut prints & patches, and all things worm!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; ceramics",
+    "confidence": "Medium",
+    "sourceOrder": 231,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 308,
+    "boothLabel": "#308",
+    "name": "UB Draws",
+    "url": "https://ubdraws.com",
+    "category": "Art & Illustration",
+    "description": "🌙 UB Draws uses eco-friendly and recycled materials to make whimsical, spooky, and fantasy-inspired art for the weirdos and misfits of the world, including paper maché clay, reclaimed fabrics, and biodegradable cotton products!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; ceramics",
+    "confidence": "High",
+    "sourceOrder": 203,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 309,
+    "boothLabel": "#309",
+    "name": "Jenny Provo Designs",
+    "url": "https://www.jennyprovo.com/",
+    "category": "Art & Illustration",
+    "description": "🌟 Jenny Provo is a small business bursting with big personality! If you love bright colors, florals, fun details, and all things girly, you’re in the right place!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration",
+    "confidence": "High",
+    "sourceOrder": 138,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 310,
+    "boothLabel": "#310",
+    "name": "Still Water Comforts,",
+    "url": "https://www.instagram.com/p/DZh8zxyEfB-/",
+    "category": "Home & Self-Care",
+    "description": "😌 Still Water Comforts: personalized handmade PEACE! Bring home calm you can hold, made with compassionate understanding.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; self-care",
+    "confidence": "High",
+    "sourceOrder": 202,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 311,
+    "boothLabel": "#311",
+    "name": "Wood Candle Co",
+    "url": "https://www.woodcandleco.com",
+    "category": "Candles & Home Fragrance",
+    "description": "🕯️ Based in Verona, WI, Wood Candle Co is an LGBTQ+ owned small business dedicated to hand-pouring premium soy wax candles and wax melts!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Candles & Home Fragrance; home/decor; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 230,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 314,
+    "boothLabel": "#314",
+    "name": "Besom Boutique",
+    "url": "https://www.besomboutique.com/?srsltid=AfmBOop_v2dDX0MV8mo946aSBjDOVZyP7WfxnlMCFifrvPz-6CvMYfQ8",
+    "category": "Spiritual / Occult",
+    "description": "🦇 Besom Boutique creates handcrafted, wearable magick and uniquely designed statement art pieces! Shop magick that's intentional!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; art; witchy",
+    "confidence": "High",
+    "sourceOrder": 116,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 314,
+    "boothLabel": "#314",
+    "name": "Tres Ojos",
+    "url": "https://www.instagram.com/tr3s.ojos/",
+    "category": "Spiritual / Occult",
+    "description": "✨ Tres Ojos is a Queer Chicana owned modern Botanica. Find all your witchy needs at their booth, including candles and bottled spells!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; home/decor; witchy",
+    "confidence": "High",
+    "sourceOrder": 191,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 315,
+    "boothLabel": "#315",
+    "name": "T.M. Ledvina",
+    "url": "https://www.tmledvina.com/aboutme",
+    "category": "Books & Paper Goods",
+    "description": "📘 T.M. Ledvina is an avid reader and writer with a bachelor of the arts in English, and loves all things fantasy and romance. Ledvina is the author of the Brimstone and Fire series. Toss a book in your bag and discover your next favorite series!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; art; apparel; books/comics",
+    "confidence": "High",
+    "sourceOrder": 229,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 316,
+    "boothLabel": "#316",
+    "name": "Chase My Creations",
+    "url": "https://chasemycreations.com/",
+    "category": "Art & Illustration",
+    "description": "🔥 Chase My Creations is a mission-driven apparel and activism brand using art as a weapon against injustice. Their work is designed to spark discomfort, disrupt complacency, and empower people to speak up, occupy space, and take a stand.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; apparel",
+    "confidence": "High",
+    "sourceOrder": 1,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 317,
+    "boothLabel": "#317",
+    "name": "Loop D Loopz",
+    "url": "https://www.loopdloopz.com/",
+    "category": "Fiber Art & Crochet",
+    "description": "🔔 Loop D Loopz is a small, local Madison business that specializes in colorful fiber art goods. From taco bell hats to goose purses, Loop D Loopz brings new, whimsical goods to every sale!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; art; crochet/fiber; apparel",
+    "confidence": "High",
+    "sourceOrder": 63,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 317,
+    "boothLabel": "#317",
+    "name": "Strawbearry Matcha",
+    "url": "https://www.instagram.com/strawbearrymatcha/",
+    "category": "Fiber Art & Crochet",
+    "description": "cute crocheted plushies and handmade jewelry and accessories to get you in touch with your inner child. Their plushies are hand crocheted with the softest yarn, making them extra huggable.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; jewelry; crochet/fiber",
+    "confidence": "Medium",
+    "sourceOrder": 208,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 320,
+    "boothLabel": "#320",
+    "name": "James Steeno Gallery",
+    "url": "http://www.jamessteeno.com/",
+    "category": "Art & Illustration",
+    "description": "🎨 James Steeno is the artist behind his namesake Wisconsin brand known for its scenes and subject matter spanning the great state of Wisconsin, both the untamed and the civilized.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 122,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 321,
+    "boothLabel": "#321",
+    "name": "Abby Seltzer Ceramics",
+    "url": "https://www.abbyseltzerceramics.com/",
+    "category": "Pottery & Ceramics",
+    "description": "☕ Abby Seltzer creates wheel-thrown porcelain ceramics that blend function, comfort, and a love for the natural world. Her everyday pieces feature textures inspired by the earth 🌎",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics",
+    "confidence": "High",
+    "sourceOrder": 12,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 322,
+    "boothLabel": "#322",
+    "name": "Let's Link Permanent Jewelry",
+    "url": "https://letslinkjewelry.com/",
+    "category": "Jewelry & Accessories",
+    "description": "Likely jewelry or accessories based on vendor name; verify before publishing.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 43,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 323,
+    "boothLabel": "#323",
+    "name": "Typeset Studio",
+    "url": "https://www.etsy.com/shop/TypesetStudio",
+    "category": "Art & Illustration",
+    "description": "🌟 Typeset Studio crafts eclectic art with words. From altered classic paintings with sass to minimal designs with philosophy, they have designs to amuse, offend or inspire.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 200,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 326,
+    "boothLabel": "#326",
+    "name": "Garden Wall Bookshop",
+    "url": "https://gardenwallbookshop.com/",
+    "category": "Books & Paper Goods",
+    "description": "📘 Garden Wall Bookshop is a mother/daughter owned and operated independent bookstore, located in Verona, WI, that prioritizes uplifting diverse voices and caring for the natural world 🌿",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; books/comics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 14,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 327,
+    "boothLabel": "#327",
+    "name": "Jennifer Froh Jewelry",
+    "url": "https://jenniferfroh.com/",
+    "category": "Jewelry & Accessories",
+    "description": "✨ Jennifer Froh Jewelry makes colorful anodized aluminum chainmaille jewelry. She specializes in different pride flag colors and loves to make custom pieces on-site. Her boothmate is her mom who creates geeky polarfleece pillows!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 130,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 328,
+    "boothLabel": "#328",
+    "name": "Emily Makes Things",
+    "url": "https://www.emilymarieeklof.com/",
+    "category": "Fiber Art & Crochet",
+    "description": "I spend a lot of time thinking about quilts. I love all of them, but there is a special place in my soul for scrappy, wonky, hand-sewn-from-scrap wonders. One day someone looked at a pile of scraps and decided they’d put them all together to make a beautiful thing to keep someone warm.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 137,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 329,
+    "boothLabel": "#329",
+    "name": "Magpied Illustration",
+    "url": "https://magpied.art/",
+    "category": "Art & Illustration",
+    "description": "🐦‍⬛ Magpied Illustration captures pagan lore perfectly. Maggie is a digital artist that creates work inspired by the natural world. They have an affinity for creatures, folklore, and medieval works!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 91,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 330,
+    "boothLabel": "#330",
+    "name": "Crash Box Therapy",
+    "url": "https://www.crashboxtherapy.com/",
+    "category": "Home & Self-Care",
+    "description": "Crash Box Therapy is a wellness-centered stress relief hub helping people manage pressure through movement, creativity, and intentional experiences",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; self-care",
+    "confidence": "High",
+    "sourceOrder": 29,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 331,
+    "boothLabel": "#331",
+    "name": "Hayley's Clay Kitchen",
+    "url": "https://www.etsy.com/shop/HayleysClayKitchen",
+    "category": "Pottery & Ceramics",
+    "description": "🩷 Hayley’s Clay Kitchen hand makes polymer clay food-themed earrings and accessories! Each uniquely handcrafted piece adds a touch of whimsy and fun to your daily style!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; jewelry; ceramics",
+    "confidence": "High",
+    "sourceOrder": 66,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 332,
+    "boothLabel": "#332",
+    "name": "That Nerd Girl Studio",
+    "url": "https://www.etsy.com/shop/thatnerdgirlstudio",
+    "category": "Toys & Cute Stuff",
+    "description": "🎲 That Nerd Girl Studio creates handcrafted gifts and accessories for geeks, gamers, fans, and friends of all kinds. Their special focus is on TTRPG accessories, including their signature d20 pens and collapsible dice trays.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff",
+    "confidence": "Medium",
+    "sourceOrder": 238,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 333,
+    "boothLabel": "#333",
+    "name": "Telsaan Tea",
+    "url": "https://www.telsaan.com/?srsltid=AfmBOorgBwQhCGNA2dD4Jq-3ENUOalvuhx0ECxafwnVGmy_GEwLPNqOX",
+    "category": "Food & Sweets",
+    "description": "🍵 Telsaan Tea loves tea. Simple! It's a part of their daily lives, and want it to be a part of yours, too.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; art; food/drink",
+    "confidence": "High",
+    "sourceOrder": 235,
+    "block": "main-300",
+    "blockOrder": 5,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 402,
+    "boothLabel": "#402",
+    "name": "Golden Whimsy",
+    "url": "https://www.etsy.com/shop/TheGoldenWhimsyCo",
+    "category": "Jewelry & Accessories",
+    "description": "⭐ Golden Whimsy, curated by your favorite sapphic couple, Kai and Lauren, offers a variety of handmade whimsical items. Our treasures include embroidery, earrings, hair charms, and glasses chains!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 30,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 403,
+    "boothLabel": "#403",
+    "name": "Hinoki Florals",
+    "url": "https://hinokiflorals.com/",
+    "category": "Plants & Florals",
+    "description": "💐 Angela of Hinoki Florals prides herself on creating art with locally grown and gathered flowers in many mediums. She offers both original works and reproductions in varying formats!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Plants & Florals; art",
+    "confidence": "High",
+    "sourceOrder": 82,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 404,
+    "boothLabel": "#404",
+    "name": "Creative Chaos",
+    "url": "https://www.facebook.com/Creativechaosstudio.erl/",
+    "category": "Art & Illustration",
+    "description": "👜 Creative Chaos has bags and more to peruse! Amanda enjoys bringing a touch of whimsy to every product she makes.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; apparel",
+    "confidence": "High",
+    "sourceOrder": 37,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 405,
+    "boothLabel": "#405",
+    "name": "Alisha Kiara Design",
+    "url": "https://www.alishakiaradesign.com/",
+    "category": "Art & Illustration",
+    "description": "🌻 Alisha Kiara Design is a creative brand that empowers women to reconnect with their feminine energy and creativity through meaningful art, products, and classes. Check them out!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 24,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 408,
+    "boothLabel": "#408",
+    "name": "HCSandvold",
+    "url": "https://www.instagram.com/hcsandvold/",
+    "category": "Art & Illustration",
+    "description": "🌼HCSandvold captures moments of the natural world in wood, printed and collaged for traditional and non-traditional prints.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 70,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 409,
+    "boothLabel": "#409",
+    "name": "Kaybee Kitsch",
+    "url": "https://kaybeekitsch.com/",
+    "category": "Toys & Cute Stuff",
+    "description": "Kit of Kaybee Kitsch is best known for crocheting teeny tiny sweaters onto plastic animals, but they make all kinds of jewelry and home decor from plastic toys. They thrift the majority of the toys they use to make use of plastic that already exists in the world, crafting environmentally-friendly, nostalgic, and whimsical objects for all to enjoy.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff; jewelry; crochet/fiber; home/decor; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 3,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 410,
+    "boothLabel": "#410",
+    "name": "Woodland Lore",
+    "url": "https://www.facebook.com/190942884092030/",
+    "category": "Fiber Art & Crochet",
+    "description": "🌳 Inspired by their home in Northwoods Wisconsin and a love of myth and magic, Woodland Lore provides hand made Amigurumi, jewelry, and art straight from their hands and hearts!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; art; jewelry; crochet/fiber; witchy",
+    "confidence": "Medium",
+    "sourceOrder": 233,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 411,
+    "boothLabel": "#411",
+    "name": "Jam and Bee Ceramics",
+    "url": "https://jamandbeeceramics.com/",
+    "category": "Pottery & Ceramics",
+    "description": "🩷 Jam & Bee Ceramics make slow and small batches of colorful, happy, and sometimes profane pottery for your everyday celebrations.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 118,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 414,
+    "boothLabel": "#414",
+    "name": "Kyle Donaldson Art",
+    "url": "https://www.instagram.com/kdlynnn/",
+    "category": "Art & Illustration",
+    "description": "🦉 Kyle Donaldson (formerly Mare & James) creates art for the daydreaming kids, laying in the grass looking at clouds. Using watercolor, she takes moments and memories and captures them in paint - nostalgia and wonder combined.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 23,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 415,
+    "boothLabel": "#415",
+    "name": "Feolaga Designworks",
+    "url": "https://www.feolagadesignworks.com/",
+    "category": "Art & Illustration",
+    "description": "🐉 Tania Richter of Feolaga is an author and illustrator who enjoys crafting fantastical creatures and writing about them. They dabble in everything from puppets to paperbacks!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; books/comics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 161,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 416,
+    "boothLabel": "#416",
+    "name": "Huckleberry Rahr",
+    "url": "https://huckleberryauthor.com/",
+    "category": "Books & Paper Goods",
+    "description": "Huckleberry Rahr writes queer YA urban fantasy and dystopian books. Her books are quick reads enjoyed by people of all ages.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; books/comics",
+    "confidence": "High",
+    "sourceOrder": 106,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 417,
+    "boothLabel": "#417",
+    "name": "Sylvia Bee",
+    "url": "https://sylvia-bee.square.site/",
+    "category": "Pottery & Ceramics",
+    "description": "Linocut Prints and Hand carved Pottery.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics",
+    "confidence": "Medium",
+    "sourceOrder": 226,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 420,
+    "boothLabel": "#420",
+    "name": "1146 Vegan",
+    "url": "https://1146-vegan-llc.square.site/",
+    "category": "Food & Sweets",
+    "description": "Gluten-free vegan bakery and juice bar.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; food/drink",
+    "confidence": "High",
+    "sourceOrder": 4,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 420,
+    "boothLabel": "#420",
+    "name": "Inspired Alchemy",
+    "url": "https://www.inspiredalchemy.org/",
+    "category": "Spiritual / Occult",
+    "description": "💜 Inspired Alchemy creates handcrafted cacao truffles that blend indulgence with intention. Each flavor is a unique creation — dairy-free, gluten-free, and free from refined suga",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; food/drink",
+    "confidence": "High",
+    "sourceOrder": 110,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 421,
+    "boothLabel": "#421",
+    "name": "Opa's Custom Woodworking",
+    "url": "https://opaswoodworking.com/",
+    "category": "Woodworking",
+    "description": "🪵 Opa's Custom Woodworking sells pre-made one-of-a-kind cutting boards and cheese slicers, wooden bookmarks, earrings, and more. They also welcome all types of custom work.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Woodworking; jewelry; books/comics",
+    "confidence": "High",
+    "sourceOrder": 180,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 422,
+    "boothLabel": "#422",
+    "name": "Emo Pottery",
+    "url": "https://www.instagram.com/emo_pottery/",
+    "category": "Pottery & Ceramics",
+    "description": "🍵Emo Pottery is a local one woman owned and operated business. Moe designs, crafts, and sculpts each piece by hand, designed with tactile sensory interaction in mind.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 141,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 423,
+    "boothLabel": "#423",
+    "name": "Salve Regina Tchotchkes",
+    "url": "https://www.etsy.com/shop/SalveReginaTchotchke",
+    "category": "Jewelry & Accessories",
+    "description": "🪙 Salve Regina Tchotchkes carries handmade fun and funky jewelry out of everyday objects such as dominoes, postage stamps, coins, and retro ephemera. We love upcycling 👏",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 258,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 426,
+    "boothLabel": "#426",
+    "name": "Witchbriar Cottage",
+    "url": "https://witchbriar.com",
+    "category": "Spiritual / Occult",
+    "description": "🌿 Witchbriar Cottage is a multidisciplinary 2-artist collective creating cute, weird, whimsical digital designs, and producing trinkets and tidbits for everyone to enjoy!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; art; witchy",
+    "confidence": "Medium",
+    "sourceOrder": 227,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 427,
+    "boothLabel": "#427",
+    "name": "Cooper Creations",
+    "url": "https://cooperscreation.com/",
+    "category": "Art & Illustration",
+    "description": "💎 Cooper Creations is a woman + queer owned small business that focuses on alternative/fantasy style accessories and apparel. From crystal headpieces to body chains to festival wear, there's something for anyone.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; apparel; self-care",
+    "confidence": "High",
+    "sourceOrder": 17,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 428,
+    "boothLabel": "#428",
+    "name": "Pawsies Pet Essentials",
+    "url": "https://pawsinnpe.com/",
+    "category": "Pet Goods",
+    "description": "🐕Inspired by an unconditional love of dogs, Pawsies Pet Essentials was created with compassion at its heart. They are a thoughtfully curated pet boutique offering healthy and fun dog treats, accessories, and more.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pet Goods; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 195,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 429,
+    "boothLabel": "#429",
+    "name": "Art of Sweaterjon",
+    "url": "https://www.sweaterjon.com/",
+    "category": "Art & Illustration",
+    "description": "🫪 Sweaterjon creates fun and vibrant paintings that tell a story in each piece of work. Expand your art collection with a one of a kind original piece!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 48,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 430,
+    "boothLabel": "#430",
+    "name": "Holly's Hooks",
+    "url": "https://www.hollyshooks.com/",
+    "category": "Fiber Art & Crochet",
+    "description": "🧶 Kit of Kaybee Kitsch is best known for taking plastic toys (largely thrifted) and crocheting micro sweaters onto their bodies. This one-person operation started with the goal of repurposing toys that can't be traditionally recycled!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; art; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 90,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 431,
+    "boothLabel": "#431",
+    "name": "Back Alley Cat Goods",
+    "url": "https://www.backalleycatgoods.com/",
+    "category": "Pet Goods",
+    "description": "Woman-owned handmade cat toy shop built around a simple mission: have fun with it.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pet Goods; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 76,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 432,
+    "boothLabel": "#432",
+    "name": "The Eco Purse Project",
+    "url": "https://www.facebook.com/EcoPurseProject/",
+    "category": "Apparel & Textiles",
+    "description": "The Eco Purse Project is a Wisconsin-based artisanal brand run by artist Angela Scott, specializing in handmade, upcycled clothing and accessories. Founded in 2010, the project creates one-of-a-kind wearable art—such as sweater coats, wrap skirts, and bags—by reclaiming and repurposing vintage fabrics",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; art; apparel",
+    "confidence": "High",
+    "sourceOrder": 255,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 433,
+    "boothLabel": "#433",
+    "name": "Jelly Lemons Studio",
+    "url": "https://www.etsy.com/shop/LemonJellyStudio",
+    "category": "Art & Illustration",
+    "description": "🍋Jelly Lemons Studio focuses on vibrant pet portraits and whimsical home good crafts. From garlands and ornaments, to patches and prints, they would love to have a hand in bringing some \"pop-inspired\" joy to your home.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 126,
+    "block": "main-400",
+    "blockOrder": 6,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 502,
+    "boothLabel": "#502",
+    "name": "Coodos",
+    "url": "https://coodosshop.myshopify.com/",
+    "category": "Art & Illustration",
+    "description": "⭐ Coodos is an artist and animator making technicolor creatures straight from the uncanny valley. Enter their technicolor world!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 13,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 503,
+    "boothLabel": "#503",
+    "name": "Arielle's Art",
+    "url": "https://www.ariellesart.com/general-1",
+    "category": "Pottery & Ceramics",
+    "description": "Nature-inspired handmade ceramics, cute planters, sculpted mushrooms, and Raku-fired pieces from Madison-based artist Arielle.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics; home/decor",
+    "confidence": "High",
+    "sourceOrder": 44,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 504,
+    "boothLabel": "#504",
+    "name": "Xeroine Illustration",
+    "url": "http://www.xeroineillustration.com/",
+    "category": "Art & Illustration",
+    "description": "✨ Xeroine Illustration is a Xicana artist born and raised in Milwaukee who creates art work with themes of cultural identity, sexuality and fat body positivity 💖",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; self-care",
+    "confidence": "High",
+    "sourceOrder": 239,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 505,
+    "boothLabel": "#505",
+    "name": "Becca Farrow",
+    "url": "https://www.beccafarrow.com/",
+    "category": "Art & Illustration",
+    "description": "🗡️ Becca Farrow is a freelance illustrator and designer making art for lovers of fantasy, knicknacks, and fandom. She works primarily in comics, publishing, and games and loves doing covers, sequential art, and character design.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; books/comics",
+    "confidence": "High",
+    "sourceOrder": 100,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 508,
+    "boothLabel": "#508",
+    "name": "Kirstobot and Friends",
+    "url": "https://www.etsy.com/shop/KirstobotandFriends",
+    "category": "Art & Illustration",
+    "description": "👾 Kirstobot’s main inspiration for making art is spreading joy! She loves making products where people can find themselves - whether it be through their pride flag or by identifying with one of her goofy cats or monsters.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 15,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 509,
+    "boothLabel": "#509",
+    "name": "Monoceros Made",
+    "url": "https://www.monocerosmade.com/",
+    "category": "Pottery & Ceramics",
+    "description": "🐸 Monoceros Made crafts ceramics that combine both wheel and hand building. They love the overlap between form and function, and find ways to add beauty and joy to items you can put to good use!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 155,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 510,
+    "boothLabel": "#510",
+    "name": "Daisy Do Crochet",
+    "url": "https://www.instagram.com/daisydoecrochets/",
+    "category": "Fiber Art & Crochet",
+    "description": "Daisy Do Crochet is a queer, woman owned small business that specializes in goofy, adorable crocheted treasures.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 77,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 511,
+    "boothLabel": "#511",
+    "name": "Elizabeth Higgins Art",
+    "url": "https://www.ehiggins.art/",
+    "category": "Art & Illustration",
+    "description": "🐾 Elizabeth of the Little Grimlings is a queer nonbinary artist that makes faux taxidermy monsters and mushrooms out of scrap fabrics, eco friendly fake fur, clay, and anything else they can get their hands on.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; ceramics",
+    "confidence": "High",
+    "sourceOrder": 125,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 514,
+    "boothLabel": "#514",
+    "name": "Stitches of Yarnia",
+    "url": "https://www.facebook.com/stitchesofyarnia/",
+    "category": "Fiber Art & Crochet",
+    "description": "🧶 Shop Stitches of Yarnia, a woman owned, all handmade, local business dedicated to seeing all small business pals succeed! Get a bag to stash your stuff!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; apparel; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 205,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 515,
+    "boothLabel": "#515",
+    "name": "Actoons",
+    "url": "https://actoons.bigcartel.com/",
+    "category": "Toys & Cute Stuff",
+    "description": "Limited enamel pins, charms, buttons, plushies, and other cute illustrated goods from actoons / broachart.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff; art; jewelry; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 20,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 516,
+    "boothLabel": "#516",
+    "name": "ButchBunnyArt",
+    "url": "https://www.instagram.com/butchbunnyart/",
+    "category": "Art & Illustration",
+    "description": "🐰 ButchBunnyArt is a collective of LGBTQ women artists who make and design stickers, keychains, paintings, and other cute nerdy things!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 140,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 516,
+    "boothLabel": "#516",
+    "name": "Daniell Designs",
+    "url": "https://daniellaven.com/",
+    "category": "Art & Illustration",
+    "description": "🩵Daniell Aven creates stickers and other goodies with cottagecore and witchy vibes, often with a dash of casually queer!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; witchy",
+    "confidence": "High",
+    "sourceOrder": 81,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 517,
+    "boothLabel": "#517",
+    "name": "Mel's Cozy Crochet",
+    "url": "https://www.etsy.com/shop/MelsCozyCrochet",
+    "category": "Fiber Art & Crochet",
+    "description": "🧶 Mel's Cozy Crochet specializes in handmade amigurumi style crocheted stuffed animals of all shapes and sizes. She hopes to spread whimsy and joy throughout the community with her little critters!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; pets/animals; community",
+    "confidence": "High",
+    "sourceOrder": 123,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 520,
+    "boothLabel": "#520",
+    "name": "Ari's Artifacts",
+    "url": "https://www.arisartifacts.com/",
+    "category": "Jewelry & Accessories",
+    "description": "🪨 Ari has taken their Lake Superior finds and fashioned them into elegant, natural jewelry. His works of basalt, agate, chalcedony, and glass, found while combing the beaches, have been transformed into wearable art.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art; jewelry",
+    "confidence": "High",
+    "sourceOrder": 40,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 521,
+    "boothLabel": "#521",
+    "name": "Don't Know Jack Studio",
+    "url": "https://www.instagram.com/reel/DRAlakoEQql/",
+    "category": "Art & Illustration",
+    "description": "🐸 Don’t Know Jack Studio specializes in hand made felt trinkets, accessories and home decor. Customize your IRL avatar and your space with fun, cute and wacky designs!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; home/decor",
+    "confidence": "High",
+    "sourceOrder": 117,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 521,
+    "boothLabel": "#521",
+    "name": "Starry Moth Works",
+    "url": "https://www.etsy.com/shop/StarryMothWorks/sold?ref=shop_home_listings",
+    "category": "Home Goods",
+    "description": "🌟 Starry Moth Works creates handmade stained glass sun-catchers to add a natural touch to any space. They offer a variety of stained glass pieces along with smaller decorations for all occasions.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home Goods; home/decor; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 199,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 522,
+    "boothLabel": "#522",
+    "name": "Divergent in Mind",
+    "url": "https://divergentinmind.com/?srsltid=AfmBOoqb4zKUCRkH9FLbodpkibU3Dyquq8OlURkQDqKE5ScDsoy5lPXQ",
+    "category": "Jewelry & Accessories",
+    "description": "At Divergent in Mind, we believe that through intentional and meaningful design we can create jewelry that allows you to incorporate sensory and self-stimulation to feel the way you need throughout your day.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 97,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 523,
+    "boothLabel": "#523",
+    "name": "Fell Star Nova",
+    "url": "https://www.etsy.com/shop/FellStarNova",
+    "category": "Toys & Cute Stuff",
+    "description": "🧶 Fell Star Nova is a queer disabled artist making cute and colorful art that’s out of this world! From the cuddly to the stylish, they have a whole selection to choose from!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff; art",
+    "confidence": "Medium",
+    "sourceOrder": 157,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 526,
+    "boothLabel": "#526",
+    "name": "Witch Queen Workshop",
+    "url": "https://www.witchqueen.net/",
+    "category": "Home & Self-Care",
+    "description": "🧙‍♀️ Witch Queen Workshop hand makes a wide range of luxurious queer & fantastic bath & body products. Add some magic to your space & routine with her Potion line that includes geeky bath bombs, pride soaps, and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; self-care; witchy",
+    "confidence": "Medium",
+    "sourceOrder": 224,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 527,
+    "boothLabel": "#527",
+    "name": "The Duchess and the Dane",
+    "url": "https://www.instagram.com/theduchessandthedane/",
+    "category": "Jewelry & Accessories",
+    "description": "💎 The Duchess and the Dane have a mission: saving vintage jewelry one piece at a time. Come check out their one of a kind pieces at a variety of price points!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry",
+    "confidence": "High",
+    "sourceOrder": 253,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 528,
+    "boothLabel": "#528",
+    "name": "Malina Dowling",
+    "url": "https://www.malinadowling.com/",
+    "category": "Art & Illustration",
+    "description": "🦋Malina Dowling is a fantasy artist that paints otherworldly beings in soft, glowing watercolor. Her subjects range from dragons and angels of a cosmic scale, to fairies inspired by real-life insects.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 103,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 529,
+    "boothLabel": "#529",
+    "name": "Matt Zuelke Ceramics",
+    "url": "https://www.instagram.com/fresh.baked.pots/",
+    "category": "Pottery & Ceramics",
+    "description": "Pottery and Ceramics",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 115,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 530,
+    "boothLabel": "#530",
+    "name": "Cream City Threads",
+    "url": "https://www.creamcitythreads.com/",
+    "category": "Apparel & Textiles",
+    "description": "Cream City Threads is an online vintage clothing business based out of Milwaukee, Wisconsin. All products are thrifted and carefully selected.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; apparel",
+    "confidence": "High",
+    "sourceOrder": 33,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 531,
+    "boothLabel": "#531",
+    "name": "Lyric Designs",
+    "url": "",
+    "category": "Art & Illustration",
+    "description": "🐛 Lyric Designs specializes in linocut carvings on patches, prints, and other media! They also have whimsical, thoughtful stickers and other multi media work.",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 75,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 532,
+    "boothLabel": "#532",
+    "name": "Squirrel Art",
+    "url": "https://www.instagram.com/squirrelartwi/",
+    "category": "Art & Illustration",
+    "description": "🐿️ Squirrel Art is all about odd, creepy, weird and generally out there art you can admire, use and wear. They prioritize materials that are found or upcycled and firmly believe art is for all.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 193,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 533,
+    "boothLabel": "#533",
+    "name": "Maison Orostrata",
+    "url": "https://www.orostrata.com/maison-orostrata",
+    "category": "Candles & Home Fragrance",
+    "description": "🕯️ Maison Orostrata creates elevated home fragrance and home decor inspired by destinations around the world. Every scent is designed to capture the atmosphere of a place and the feeling of being there.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Candles & Home Fragrance; home/decor",
+    "confidence": "High",
+    "sourceOrder": 99,
+    "block": "main-500",
+    "blockOrder": 7,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 602,
+    "boothLabel": "#602",
+    "name": "MosesSista",
+    "url": "https://www.mosessista.com/",
+    "category": "Jewelry & Accessories",
+    "description": "🦋MosesSista is a small black-owned business that creates colorful and unique handmade jewelry and natural bodycare products 🌿",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry; self-care",
+    "confidence": "Medium",
+    "sourceOrder": 159,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 603,
+    "boothLabel": "#603",
+    "name": "Frau Meow",
+    "url": "https://www.etsy.com/shop/ShopFrauMeow",
+    "category": "Art & Illustration",
+    "description": "🐈 Frau Meow creates fun and colorful cat inspired stationery, art prints, plush, craft kits, bags, and bolo ties featuring her designs and illustrations!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; crochet/fiber; apparel; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 6,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 603,
+    "boothLabel": "#603",
+    "name": "Turbulent Waters",
+    "url": "https://www.instagram.com/turbulentwatersart/",
+    "category": "Art & Illustration",
+    "description": "🌊 Turbulent Waters channels creativity through art prints, stickers, and jewelry, with inspiration drawn from nature, outer space, supernatural elements, and vintage items!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; jewelry",
+    "confidence": "Medium",
+    "sourceOrder": 197,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 604,
+    "boothLabel": "#604",
+    "name": "Ceramics by Cami",
+    "url": "https://www.ceramicsbycami.com/",
+    "category": "Pottery & Ceramics",
+    "description": "⭐ Ceramics by Cami employs a balance of cosmic delights and earthy connections in their work. Each piece is crafted with careful intention for the person who will use it.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics",
+    "confidence": "High",
+    "sourceOrder": 156,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 604,
+    "boothLabel": "#604",
+    "name": "Megan Stout's Illustrations",
+    "url": "https://www.stoutmegan.com/",
+    "category": "Art & Illustration",
+    "description": "work digitally, but enjoy working with traditional materials such as acrylic, gouache, copic markers, and like to experiment with mixing media.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration",
+    "confidence": "High",
+    "sourceOrder": 119,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 605,
+    "boothLabel": "#605",
+    "name": "Prismatica Glass",
+    "url": "https://www.instagram.com/prismaticaglass/",
+    "category": "Home Goods",
+    "description": "🐦‍⬛ Prismatica Glass is a big, gay, woman owned business! Making glass since 2018, Molly-Jo’s work is shining through windows all over Dane county and beyond!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home Goods",
+    "confidence": "High",
+    "sourceOrder": 222,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 608,
+    "boothLabel": "#608",
+    "name": "Spirit Root Art",
+    "url": "https://www.spiritrootart.com/",
+    "category": "Spiritual / Occult",
+    "description": "🌿 Spirit Root Art is a trans, queer, and neurodivergent owned small business selling hand-crafted whimsical jewelry, art prints, and mixed media originals that light up your inner child.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; art; jewelry",
+    "confidence": "High",
+    "sourceOrder": 181,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 609,
+    "boothLabel": "#609",
+    "name": "The Cozy Corner",
+    "url": "",
+    "category": "Home Goods",
+    "description": "Likely home goods or decor based on vendor name; verify before publishing.",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Home Goods; home/decor",
+    "confidence": "High",
+    "sourceOrder": 249,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 610,
+    "boothLabel": "#610",
+    "name": "Good Niche Co",
+    "url": "https://goodnicheco.com/",
+    "category": "Apparel & Textiles",
+    "description": "🐸 Good Niche Co. is a clothing and accessories company based on the pillars of art, science, and generosity. Watercolor paintings of toads, isopods, opossums and other wildlife grace beautiful skirts, shirts, tea towels, stickers, and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; art; apparel; food/drink; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 34,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 611,
+    "boothLabel": "#611",
+    "name": "Geoff Paints Stuff",
+    "url": "https://geoffpaints.com/",
+    "category": "Art & Illustration",
+    "description": "👏 Geoff Staub is a Madison based painter who creates art with themes of love, LGBTQIA+ Pride, Deaf Culture, social issues, addiction and recovery, oppression, human rights, and ASL.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 26,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 614,
+    "boothLabel": "#614",
+    "name": "Runic Wren",
+    "url": "https://www.runicwren.com/",
+    "category": "Art & Illustration",
+    "description": "Nature, fantasy and gaming-inspired prints, stickers, keychains, figurines and shirts.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; apparel",
+    "confidence": "High",
+    "sourceOrder": 254,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 615,
+    "boothLabel": "#615",
+    "name": "Noodle and Bean",
+    "url": "https://www.noodleandbean.com/",
+    "category": "Art & Illustration",
+    "description": "😹 Noodle and Bean crafts whimsical adventures centered around the two namesake cats. Their work is brought to life through diverse merchandise including art prints, needle felted figures, stickers, and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "Medium",
+    "sourceOrder": 168,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 616,
+    "boothLabel": "#616",
+    "name": "CrochetingAce",
+    "url": "https://www.etsy.com/shop/CrochetingAce",
+    "category": "Fiber Art & Crochet",
+    "description": "🧶 Crocheting Ace crochets unique plushies such as food and plant themed animals, and LGBT+ pride flag animals. They enjoy making a wide range of cute and funny plushies so everyone can find something they love!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 49,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 617,
+    "boothLabel": "#617",
+    "name": "Crimson Koi Ceramics",
+    "url": "https://www.crimsonkoi.com/",
+    "category": "Pottery & Ceramics",
+    "description": "☕ Crimson Koi Ceramics creates hand-made, stoneware ceramics of a nerdy nature, including dragon mugs, scaled eggs & wares, fandom-inspired goods & more! DISHWASHER SAFE 🫧",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics",
+    "confidence": "High",
+    "sourceOrder": 41,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 620,
+    "boothLabel": "#620",
+    "name": "Bast & Baetyl Alchemy",
+    "url": "https://bastandbaetyl.square.site/",
+    "category": "Spiritual / Occult",
+    "description": "Handmade, One-of-a-kind Copper Jewelry and Accessories",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; jewelry",
+    "confidence": "High",
+    "sourceOrder": 92,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 621,
+    "boothLabel": "#621",
+    "name": "HarmonyRose Art",
+    "url": "https://www.harmony-rose-art.com/",
+    "category": "Art & Illustration",
+    "description": "🌹 HarmonyRoseArt began in May 2024 as a fun way to share art and creativity with others. Enter a place where weirdos and oddballs can belong, feel safe, and feel seen.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 54,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 622,
+    "boothLabel": "#622",
+    "name": "GoofGore",
+    "url": "https://goofgore.com/",
+    "category": "Art & Illustration",
+    "description": "🧠 GoofGore is a Wisconsin-based artist who draws colorful horror artwork. Grab their work as stickers, prints, pins and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 38,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 623,
+    "boothLabel": "#623",
+    "name": "Spooky Treasure Crafts",
+    "url": "https://www.instagram.com/spookytreasurecrafts/",
+    "category": "Spiritual / Occult",
+    "description": "💀 Spooky Treasure Crafts has been crafting since she was 6, and weaves magic and love into every piece. Pick out your next treasure at her table!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Spiritual / Occult; witchy",
+    "confidence": "Medium",
+    "sourceOrder": 187,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 626,
+    "boothLabel": "#626",
+    "name": "Bee Batty Studio",
+    "url": "https://www.beebattystudio.com/",
+    "category": "Art & Illustration",
+    "description": "💜Bee Batty Studio is excited to share ekphrastic poetry, original art, and mindfulness to help you live your most creative life!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 108,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 627,
+    "boothLabel": "#627",
+    "name": "Maikuuro Art",
+    "url": "https://maikuuro-art.square.site/",
+    "category": "Art & Illustration",
+    "description": "🌸 Maikuuro Art is a gothic / fantasy themed shop that creates works to express love for nostalgia, romance, and adventure! Find tarot inspired art, vampire focused pieces, and ways to express your identity from her wares!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; witchy",
+    "confidence": "High",
+    "sourceOrder": 95,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 628,
+    "boothLabel": "#628",
+    "name": "Three Goblin Art",
+    "url": "https://www.etsy.com/shop/ThreeGoblinArt",
+    "category": "Art & Illustration",
+    "description": "🍓 Three Goblin Art creates whimsical art filled with places that are a safe and lovely retreat for the soul, with fun characters to meet along the way.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 271,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 629,
+    "boothLabel": "#629",
+    "name": "Emz Wired Up",
+    "url": "https://www.etsy.com/shop/EmzWiredUp",
+    "category": "Jewelry & Accessories",
+    "description": "💜Emz Wired Up specializes in unique, wearable art made from raw copper wire and polished stones. Each one-of-a-kind creation is made entirely by hand and offers an earthy, approachable elegance that can elevate your individual style, while providing a connection to the natural world.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art",
+    "confidence": "High",
+    "sourceOrder": 149,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 630,
+    "boothLabel": "#630",
+    "name": "Tabal Chocolate",
+    "url": "https://www.tabalchocolate.com/?srsltid=AfmBOopwX32JBHBK4iLyIL3fpq7FE-Rbu2hM203yFxVQLKTpFRc6hI0s",
+    "category": "Food & Sweets",
+    "description": "🍫 Tabal Chocolate is a Midwest exclusive bean to bar chocolate maker - they spend their days crafting soy free, gluten free, vegan, ethically sourced, and delicious chocolate in Wauwatosa!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; food/drink",
+    "confidence": "High",
+    "sourceOrder": 232,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 631,
+    "boothLabel": "#631",
+    "name": "Ana Voltz Art",
+    "url": "https://anavoltzart.com/",
+    "category": "Art & Illustration",
+    "description": "Digital sci-fi and fantasy artwork, including colorful space and pop-culture-inspired digital paintings.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 36,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 632,
+    "boothLabel": "#632",
+    "name": "Atomikit Studio",
+    "url": "",
+    "category": "Art & Illustration",
+    "description": "Art influenced by atomic design, mid-century commercial art, and cartoons, with a mixed bag of playful styles.",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Art & Illustration; art; apparel",
+    "confidence": "High",
+    "sourceOrder": 60,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 632,
+    "boothLabel": "#632",
+    "name": "Cryptids, Cuties and Chaos",
+    "url": "https://www.cryptidscutieschaos.com/",
+    "category": "Fiber Art & Crochet",
+    "description": "🧶 Cryptids, Cuties and Chaos specializes in Cryptid, Cute and Chaotic Crocheted Creations. Head Crocheter Paxie strives to make everything VERY gay and inform everyone of how amazing her wife is.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 65,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 633,
+    "boothLabel": "#633",
+    "name": "Suzie's Stitchables",
+    "url": "https://www.instagram.com/suziestitchables/",
+    "category": "Fiber Art & Crochet",
+    "description": "cross stitch that combines homey elegance with sarcasm and pop culture. Upcycled frames complete the pieces for truly original art.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; art; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 220,
+    "block": "main-600",
+    "blockOrder": 8,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 702,
+    "boothLabel": "#702",
+    "name": "Hijinx Mixed Media",
+    "url": "https://hijinxmixedmedia.com/?srsltid=AfmBOoqo2pnHwX05E9BlWV1AbXdEDg9oHXavNEhfTikSUIFzfREDy619",
+    "category": "Art & Illustration",
+    "description": "🐸 Hijinx Mixed Media is skilled in a variety of arts specializing in illustration, printmaking, and fiber art. They love to use humor in their handmade art to bring joy, elicit laughter, and tackle tough subjects such as otherness, body positivity, and mental health.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; crochet/fiber; self-care",
+    "confidence": "High",
+    "sourceOrder": 78,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 703,
+    "boothLabel": "#703",
+    "name": "Beatrice Mckinsey Books",
+    "url": "https://beatricemckinseybooks.com/",
+    "category": "Books & Paper Goods",
+    "description": "Beatrice Mckinsey has had a love of writing ever since she was young, but what keeps her coming back over and over again is writing sapphic stories featuring messy and complicated women.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 96,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 703,
+    "boothLabel": "#703",
+    "name": "Overcaffeinated Author Publishing LLC",
+    "url": "https://laciemloubooks.com/",
+    "category": "Books & Paper Goods",
+    "description": "📘 Lacie M. Lou is a local author of queer fantasy. If you're looking for books with a lot of heart, feminine rage, and queer representation - stop by and yap about books!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; art; books/comics",
+    "confidence": "High",
+    "sourceOrder": 189,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 704,
+    "boothLabel": "#704",
+    "name": "las rubieras pottery",
+    "url": "https://lasrubieraspottery.com/",
+    "category": "Pottery & Ceramics",
+    "description": "🍯 las rubieras pottery is a Wisconsin ceramics studio creating small-batch, wheel-thrown pottery showcasing layered glazes, carved textures, and botanical and animal-inspired functional and decorative pieces!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; ceramics; home/decor; witchy; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 31,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 705,
+    "boothLabel": "#705",
+    "name": "The Stillroom Scientist",
+    "url": "https://www.instagram.com/thestillroomscientist/",
+    "category": "Home & Self-Care",
+    "description": "🧼 The Stillroom Scientist is an artisan studio blending botanical inspiration with modern formulation to create home fragrance and self-care products. Each candle and soap is developed with a balance of scientific precision and stillroom tradition.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; art; home/decor; self-care; witchy",
+    "confidence": "High",
+    "sourceOrder": 267,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 708,
+    "boothLabel": "#708",
+    "name": "Dom's Disasters",
+    "url": "https://domsdisasters.com/",
+    "category": "Art & Illustration",
+    "description": "🖤 Dom's Disasters draws funny shit with knives. They claim it “sometimes looks good.” False, it always looks good - go see for yourself!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration",
+    "confidence": "High",
+    "sourceOrder": 113,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 709,
+    "boothLabel": "#709",
+    "name": "Studio Zosimos LLC",
+    "url": "https://studiozosimos.com/",
+    "category": "Art & Illustration",
+    "description": "🎲 Studio Zosimos is an indie publisher of RPGs, riso zines, and print art based in Madison, WI. They are passionate about using the power of tabletop role-playing games and analog printmaking to foster human connection.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; books/comics",
+    "confidence": "High",
+    "sourceOrder": 211,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 710,
+    "boothLabel": "#710",
+    "name": "M.R. Lucid",
+    "url": "https://shop.app/m/3ptjcemuh4",
+    "category": "Apparel & Textiles",
+    "description": "👗MR Lucid is a clothing designer who hand makes all of their pieces primarily with upcycled materials. They love to source from thrift stores, marketplace and garage sales!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; apparel",
+    "confidence": "High",
+    "sourceOrder": 79,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 711,
+    "boothLabel": "#711",
+    "name": "Ranthebow Studio LLC",
+    "url": "https://www.etsy.com/shop/Ranthebow",
+    "category": "Art & Illustration",
+    "description": "🐦‍⬛ Ran, of Ranthebow Studio, is a Madison-based artist creating whimsical illustrations and stories. From cute birds living in teacups to hauntingly beautiful visages of fantastical worlds, they have a little bit of everything 🩷",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; food/drink",
+    "confidence": "High",
+    "sourceOrder": 228,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 714,
+    "boothLabel": "#714",
+    "name": "Design with Purpose",
+    "url": "https://designwithpurpose.shop/",
+    "category": "Art & Illustration",
+    "description": "🌙 Teanna Dosch of Design with Purpose hand makes polymer clay earring collections that are uniquely designed and feature stunning, seasonally-themed color palettes.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; ceramics; food/drink",
+    "confidence": "High",
+    "sourceOrder": 93,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 715,
+    "boothLabel": "#715",
+    "name": "Room for Dessert",
+    "url": "",
+    "category": "Food & Sweets",
+    "description": "🧁 Room for Dessert makes British and American inspired gluten free baked goods from scratch in a dedicated gluten free home kitchen. From cupcakes, to cookies, to scones, and pies, there’s always room for dessert.",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Food & Sweets; food/drink; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 246,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 715,
+    "boothLabel": "#715",
+    "name": "The Snuggly Seamstress",
+    "url": "https://www.instagram.com/snugglyseamstress/",
+    "category": "Fiber Art & Crochet",
+    "description": "😻 The Snuggly Seamstress is passionate about creating sustainable, high-quality plushies that will last a lifetime! All plush items are handmade from upcycled fabrics 🧵",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; self-care",
+    "confidence": "High",
+    "sourceOrder": 265,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 716,
+    "boothLabel": "#716",
+    "name": "Jennifer Schaller Art",
+    "url": "https://www.instagram.com/jennschaller/",
+    "category": "Art & Illustration",
+    "description": "🐈‍⬛Jennifer Schaller is an artist born in Madison, WI. Her style is reminiscent of fairy tale/children's storybook art, with themes surrounding animals, nature, and surrealism.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; books/comics; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 134,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 717,
+    "boothLabel": "#717",
+    "name": "Meredith Dillman Fantasy Art",
+    "url": "https://www.meredithdillman.com/?srsltid=AfmBOorEYuVfVsbcf-t4uGn_D7Y1Uhj0NXtQGzgSArSLyhtsTRjE0hER",
+    "category": "Art & Illustration",
+    "description": "🦊 Meredith Dillman is a watercolor and ink artist who takes inspiration from nature, fairy tales, and legends. Her stickers, prints, and washi tape will have you seeing stars 🤩",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 131,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 720,
+    "boothLabel": "#720",
+    "name": "Heartfelt by Georgia",
+    "url": "https://www.etsy.com/shop/HeartFeltByGeorgia",
+    "category": "Art & Illustration",
+    "description": "🧵 Heartfelt by Georgia creates frogs, friends, bags, and more. As a sewing enthusiast, all their creations are homemade with love!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; apparel",
+    "confidence": "High",
+    "sourceOrder": 74,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 721,
+    "boothLabel": "#721",
+    "name": "Green Gnome Candle",
+    "url": "https://www.greengnomecandle.com/",
+    "category": "Candles & Home Fragrance",
+    "description": "🕯️ Green Gnome Candle is a latina owned small business with vegan and earth friendly luxury fragrances. Brighten your space with a handmade candle ✨",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Candles & Home Fragrance; art; food/drink; home/decor",
+    "confidence": "High",
+    "sourceOrder": 46,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 722,
+    "boothLabel": "#722",
+    "name": "Cryptic Requiem Creations",
+    "url": "https://www.crypticrequiem.com/",
+    "category": "Art & Illustration",
+    "description": "💚 Specializing in jewelry made with uranium glass and ethically sourced bone, Cryptic Requiem Creations handcrafts each piece with care. From everyday earrings to statement necklaces, you're sure to find your new favorite piece here!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; jewelry",
+    "confidence": "High",
+    "sourceOrder": 57,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 723,
+    "boothLabel": "#723",
+    "name": "Emily Arroyo Wigs",
+    "url": "https://www.emilyarroyowigs.com/",
+    "category": "Wigs / Cosplay",
+    "description": "🌟Emily Arroyo Wigs is ready to up your drag or designer game! Whether you need a new do for drag, theater, or everyday looks, Emily has you covered!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Wigs / Cosplay; community",
+    "confidence": "High",
+    "sourceOrder": 133,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 727,
+    "boothLabel": "#727",
+    "name": "Hawke's Bones & Oddities",
+    "url": "https://hawkesbones.com/?srsltid=AfmBOopb0WybxPCqITgUQWjd7tDxG3YikDI885QCBwXgMVWp5zVXf-Nx",
+    "category": "Jewelry & Accessories",
+    "description": "🦴 Hawke's Bones and Oddities creates handmade bone art, jewelry, and oddities that are responsibly sourced with appreciation for nature. Hand-crafted and high quality, their work will genuinely awe you ✨",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art; jewelry",
+    "confidence": "Medium",
+    "sourceOrder": 62,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 728,
+    "boothLabel": "#728",
+    "name": "Gathering Hands",
+    "url": "https://www.etsy.com/shop/GatheringHands",
+    "category": "Jewelry & Accessories",
+    "description": "Gathering Hands ethically sources insects from nature sanctuaries around the world and offers a variety of butterfly, moth, cicada, and dragonfly wing jewelry. Gathering Hands seeks to inspire joy and wonder through the delicate intricacies of nature's flying abstract paintings while raising awareness and support for our beloved pollinators.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; art; jewelry; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 18,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 729,
+    "boothLabel": "#729",
+    "name": "Bailey's Doodles",
+    "url": "https://baileysdoodles.art/",
+    "category": "Art & Illustration",
+    "description": "🌿 Bailey's Doodles has cute stickers and stationary inspired by pop culture and their original characters! They are perfect for decorating your stuff!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; home/decor",
+    "confidence": "High",
+    "sourceOrder": 84,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 730,
+    "boothLabel": "#730",
+    "name": "Spooky Stitches",
+    "url": "https://www.instagram.com/spooky.stitches.sariah/",
+    "category": "Fiber Art & Crochet",
+    "description": "🐈‍⬛ Spooky Stitches by Sariah combines the creepy and macabre with the cute and cuddly. Who said a haunted doll couldn't be cuddly?",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet",
+    "confidence": "High",
+    "sourceOrder": 184,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 731,
+    "boothLabel": "#731",
+    "name": "Whitemanning Critical",
+    "url": "https://www.etsy.com/shop/WhitemanningCritical",
+    "category": "Art & Illustration",
+    "description": "🗡️ Whitemanning Critical is the labor of love of a sole Madison local artist, whose artistic interests include lgbt+ pride, disability awareness, and the Asian face.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 215,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 732,
+    "boothLabel": "#732",
+    "name": "Cryptidly Cute",
+    "url": "https://theojlallaman.carrd.co/",
+    "category": "Jewelry & Accessories",
+    "description": "✨ Cryptidly Cute brings a collection of creepy cute jewelry and home decor to add some personality to yourself and your home!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry; home/decor",
+    "confidence": "Medium",
+    "sourceOrder": 61,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 732,
+    "boothLabel": "#732",
+    "name": "Emrose Art Creations",
+    "url": "https://www.emroseartcreations.com/",
+    "category": "Art & Illustration",
+    "description": "🌸 Emrose Art Creations thrives on creating pieces of work that scream ‘Collection of Chaos’. She creates a wide variety of goods, much of it inspired by her love of fantasy and gaming!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 145,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 733,
+    "boothLabel": "#733",
+    "name": "CrispyMade",
+    "url": "https://www.instagram.com/crispymade/",
+    "category": "Art & Illustration",
+    "description": "🖍️ Cris from Crispy Made creates custom goods for feral humans, art for the weird, the wild, and the wonderfully unhinged.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 45,
+    "block": "main-700",
+    "blockOrder": 9,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 802,
+    "boothLabel": "#802",
+    "name": "The Artistry Studio",
+    "url": "https://theartistrystudio.net/pages/aboutme?srsltid=AfmBOoqNIfnaf5naoo--Hz6GDX1FBGEHkv5KtFAuIBgH3oIzB_Is1spN",
+    "category": "Art & Illustration",
+    "description": "🎨 Kaylin, aka The Artistry Studio, is a Madison artist working with neon paint to create vivid landscapes. She sells originals and prints of her work, and an array of stickers, stationary, and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 247,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 803,
+    "boothLabel": "#803",
+    "name": "Baldwin's Books & Records",
+    "url": "https://www.instagram.com/baldwinsbooks/",
+    "category": "Books & Paper Goods",
+    "description": "📕 Baldwin's Books & Records is a used books and records pop-up store based in Madison. We're fueled by core values of accessibility, sustainability, and integrity, maintaining prices for used books in like-new conditions under $15 to get these essential works into the hands of our community.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Books & Paper Goods; books/comics; community",
+    "confidence": "High",
+    "sourceOrder": 88,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 804,
+    "boothLabel": "#804",
+    "name": "Mississippi Mayhem",
+    "url": "https://www.etsy.com/shop/MississippiMayhem",
+    "category": "Apparel & Textiles",
+    "description": "Bags Tote and Xstitch",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; apparel",
+    "confidence": "Medium",
+    "sourceOrder": 147,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 805,
+    "boothLabel": "#805",
+    "name": "Dahlia's Enchanted Kitchen",
+    "url": "https://www.dahliasenchantedkitchen.com/",
+    "category": "Food & Sweets",
+    "description": "🌙 Dahlia's Enchanted Kitchen aims to bring a little magic to your every day cooking. With their blends of spices and teas, they prioritize organic ingredients and keep things as close to the plant as possible.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; food/drink; witchy",
+    "confidence": "High",
+    "sourceOrder": 73,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 806,
+    "boothLabel": "#806",
+    "name": "Monarch Threads",
+    "url": "https://www.monarch-threads.com/",
+    "category": "Apparel & Textiles",
+    "description": "🦋 Monarch Threads creates silly little bags for whimsical people. Hide all your trinkets in a handmade pouch!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; apparel",
+    "confidence": "High",
+    "sourceOrder": 151,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 808,
+    "boothLabel": "#808",
+    "name": "The Little Grimlings",
+    "url": "https://www.etsy.com/shop/LittleGrimlings",
+    "category": "Other / Needs Research",
+    "description": "Needs research: category and products not obvious from the vendor name.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "pets/animals",
+    "confidence": "Low",
+    "sourceOrder": 261,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 809,
+    "boothLabel": "#809",
+    "name": "The Crafting Octopus",
+    "url": "https://thecraftingoctopus.com/?srsltid=AfmBOorWebAbaVgLNZMoJfCmJMGBIkXkHQSIfA88_0q8nR-IE0BNFo1b",
+    "category": "Toys & Cute Stuff",
+    "description": "🐙The Crafting Octopus creates it all–crochet, 3D printing, cross stitch, polymer clay, and much more! You won’t want to miss their fabulous creations!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Toys & Cute Stuff; ceramics; crochet/fiber",
+    "confidence": "Medium",
+    "sourceOrder": 251,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 810,
+    "boothLabel": "#810",
+    "name": "TunaBoop Studios",
+    "url": "https://www.tunaboop.com/",
+    "category": "Art & Illustration",
+    "description": "🖤 Tunaboop Studios creates playful, cozy art inspired by nostalgia, fantasy, and a touch of chaos. From charming stickers to magical trinkets, every piece is made to spark joy and a little bit of whimsy.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; witchy",
+    "confidence": "High",
+    "sourceOrder": 194,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 812,
+    "boothLabel": "#812",
+    "name": "Kayla's Keepsakes",
+    "url": "https://kaylas-keepsakes.com/",
+    "category": "Jewelry & Accessories",
+    "description": "🪡 Kayla’s Keepsakes is a woman owned small business that sells handmade accessories and home decor!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; home/decor",
+    "confidence": "High",
+    "sourceOrder": 7,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 814,
+    "boothLabel": "#814",
+    "name": "B. Denae Artistry",
+    "url": "https://www.bdenaeartistry.com/",
+    "category": "Art & Illustration",
+    "description": "Empowering designs that begin as original acrylic paintings and become home decor, wearable items, drink carriers, and more.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; home/decor",
+    "confidence": "High",
+    "sourceOrder": 68,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 815,
+    "boothLabel": "#815",
+    "name": "The Good Jinx",
+    "url": "https://www.thegoodjinx.com/",
+    "category": "Art & Illustration",
+    "description": "🍒 The Good Jinx has a wide variety of nature themed goods and whimsical works! They create art that is happy and filled with luck! *Luck not guaranteed 😜",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "Medium",
+    "sourceOrder": 257,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 816,
+    "boothLabel": "#816",
+    "name": "CTOAN Co",
+    "url": "https://ctoanco.com/?srsltid=AfmBOor1ZzyE6tGfC6PySgy6I1ngwREQafvX3tbwYshhnQADDlVCnQgl",
+    "category": "Candles & Home Fragrance",
+    "description": "💕 CTOAN is a queer, black-owned company that makes small batch, hand poured soy candles and custom planters that celebrate fat and trans bodies. They frequently use their sales and platforms to raise money for charitable causes and mutual aid!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Candles & Home Fragrance; home/decor",
+    "confidence": "High",
+    "sourceOrder": 69,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 817,
+    "boothLabel": "#817",
+    "name": "Nicole's Clay Cottage",
+    "url": "https://www.instagram.com/nicoles.claycottage/",
+    "category": "Pottery & Ceramics",
+    "description": "Whimsical woodland paintings and pottery, including toad/duck mugs and mushroom botanicals.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pottery & Ceramics; art; ceramics; witchy",
+    "confidence": "High",
+    "sourceOrder": 167,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 818,
+    "boothLabel": "#818",
+    "name": "Amandalynn Jones",
+    "url": "http://www.amandalynnjones.com/",
+    "category": "Photography & Services",
+    "description": "Commercial, storytelling wedding, and portrait photography serving Madison and Wisconsin.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Photography & Services; books/comics",
+    "confidence": "High",
+    "sourceOrder": 32,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 820,
+    "boothLabel": "#820",
+    "name": "Tootsie's Tea",
+    "url": "https://tootsiest.com/?srsltid=AfmBOooSqDa5V1oZFbrGKiSYu2dFo2fVRsxr6ADNihsc1RDLB_M3PspD",
+    "category": "Food & Sweets",
+    "description": "🍵 Tootsie's Tea is a loose leaf tea company specializing in flavorful & mesmerizing blends using ethical ingredients sourced globally & locally!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets; food/drink",
+    "confidence": "High",
+    "sourceOrder": 176,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 821,
+    "boothLabel": "#821",
+    "name": "Caramel Cocoon Creations",
+    "url": "https://caramelcocooncreations.com/",
+    "category": "Art & Illustration",
+    "description": "🏳️‍🌈 Caramel Cocoon Creations is an illustration and craft studio focused on creating art of nature, fantasy, food, and Queer Pride. They strive to have diverse, inclusive, and sustainable products!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 152,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 822,
+    "boothLabel": "#822",
+    "name": "HnK Creations",
+    "url": "https://hnkcreations.square.site/",
+    "category": "Art & Illustration",
+    "description": "make amazing yarn creations. Crocheting the cutest Amigurumi. When you adopt an amigurumi from Hook n Knot Creations, you're not just purchasing a toy",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; crochet/fiber",
+    "confidence": "High",
+    "sourceOrder": 86,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 823,
+    "boothLabel": "#823",
+    "name": "DogKisses",
+    "url": "https://www.madisondogma.com/about",
+    "category": "Pet Goods",
+    "description": "We are a group of dog-kissing friends with Wisconsin roots who are deeply tied to local rescue, fostering canines, and raising pets of our own.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Pet Goods; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 109,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 823,
+    "boothLabel": "#823",
+    "name": "Sturgeon's Designs",
+    "url": "https://www.etsy.com/shop/SturgeonsDesigns",
+    "category": "Art & Illustration",
+    "description": "🐟 sturgeon amlaw is an irish-american lesbian artist from milwaukee, wisconsin. his work is about connection and nature, and draws inspiration from gay and trans culture and irish ancestors.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 214,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 823,
+    "boothLabel": "#823",
+    "name": "Tiny Galaxy Kid",
+    "url": "https://www.etsy.com/shop/TinyGalaxyKidShop",
+    "category": "Art & Illustration",
+    "description": "TinyGalaxyKid is a very silly artshop with illustrations, stickers, prints, and more about the radical joy of queerness, disability, being a person of color, and kissing women. Their goal is to bring a little f&gginess to the masses.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 275,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 824,
+    "boothLabel": "#824",
+    "name": "Signed by Violet",
+    "url": "https://www.instagram.com/signedbyviolet/",
+    "category": "Jewelry & Accessories",
+    "description": "💜 Based in central Wisconsin, Signed by Violet has been creating handmade clay earrings, apparel, and more since 2020! Their products will add color to your life you didn’t know you needed 🥰",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Jewelry & Accessories; jewelry; ceramics; apparel",
+    "confidence": "High",
+    "sourceOrder": 272,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 826,
+    "boothLabel": "#826",
+    "name": "Chrysalis Hair and Body",
+    "url": "https://www.vagaro.com/chrysalishairandbody/styles",
+    "category": "Home & Self-Care",
+    "description": "Hair salon featuring vintage clothing and styling services by appointment.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Home & Self-Care; apparel",
+    "confidence": "High",
+    "sourceOrder": 5,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 827,
+    "boothLabel": "#827",
+    "name": "Flower Cactus Studio",
+    "url": "https://www.etsy.com/shop/FlowerCactusStudio",
+    "category": "Plants & Florals",
+    "description": "🌵 Flower Cactus Studio is an artist who wears her passions on her sleeve. By making things from charming food animals to whimsical prints of her favorite movies, video games and shows, Taylor has something special in every corner of her booth!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Plants & Florals; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 165,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 827,
+    "boothLabel": "#827",
+    "name": "Nautical Sorbet",
+    "url": "https://nauticalsorbet.com/",
+    "category": "Art & Illustration",
+    "description": "⚓ Nautical Sorbet is run by Naia, a legally blind artist making art of her original animal characters! She also makes fanart and products inspired by beloved shows and cozy video games 🎮",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 163,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 827,
+    "boothLabel": "#827",
+    "name": "Princess Phoenix Studio",
+    "url": "https://princessphoenixstudio.com/",
+    "category": "Art & Illustration",
+    "description": "👑 Princess Phoenix Studio: where art takes flight! Visit and discover captivating fan art and creative designs, plus a few eco-friendly crafts!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 219,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 827,
+    "boothLabel": "#827",
+    "name": "ShopPooka",
+    "url": "https://pookadoodles.carrd.co/",
+    "category": "Art & Illustration",
+    "description": "🐶 ShopPooka is a digital artist converting their work into small accessories & gifts like earrings, stickers, keychains, lens cloths, washi tape and more!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; jewelry",
+    "confidence": "Medium",
+    "sourceOrder": 268,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 827,
+    "boothLabel": "#827",
+    "name": "The QPAU Shop",
+    "url": "",
+    "category": "Books & Paper Goods",
+    "description": "🦆 Enter the world of QPAU! Follow the adventures of 40 year old duck siblings as they figure out their lives in the modern world, and enjoy some fun merch and comics 🩷",
+    "day": "Standard booth / verify days",
+    "status": "Needs URL",
+    "tags": "Books & Paper Goods; books/comics",
+    "confidence": "High",
+    "sourceOrder": 263,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": false,
+    "pick": false
+  },
+  {
+    "booth": 828,
+    "boothLabel": "#828",
+    "name": "Robyn das Romain",
+    "url": "https://www.robynromain.com/",
+    "category": "Art & Illustration",
+    "description": "🦋 Robyn Das-Romain creates artwork, illustrations and animations in the Madison, WI area that celebrates the vibrancy and joy of their queer life.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "High",
+    "sourceOrder": 242,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 829,
+    "boothLabel": "#829",
+    "name": "Pink Pocky Creations",
+    "url": "https://www.instagram.com/pinkpockycreations/",
+    "category": "Art & Illustration",
+    "description": "Likely art, prints, illustration, stickers, or creative goods based on vendor name; verify before publishing.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art",
+    "confidence": "Medium",
+    "sourceOrder": 198,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 830,
+    "boothLabel": "#830",
+    "name": "Mango Man Cooks!",
+    "url": "https://mangomancooks.com/",
+    "category": "Food & Sweets",
+    "description": "🥭 Mango Man Cooks! crafts Afro-Latino-inspired sauces in small batches in Madison, where savory, rich flavor and balance introduce bright spice that wakes up your food!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Food & Sweets",
+    "confidence": "High",
+    "sourceOrder": 111,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 831,
+    "boothLabel": "#831",
+    "name": "Plushzilla",
+    "url": "https://www.etsy.com/shop/plushzilla",
+    "category": "Fiber Art & Crochet",
+    "description": "🦄 Plushzilla is original handmade plush stuffed animals and toys. These stuffed animals range from real life critters like cows, pigs and chickens to mythical creatures like dragons and unicorns. *Plushzilla is retiring from sewing soon, so get his goods while you can!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 207,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 832,
+    "boothLabel": "#832",
+    "name": "Tie Dye Blue Skies",
+    "url": "https://www.etsy.com/shop/TieDyeBlueSkies",
+    "category": "Apparel & Textiles",
+    "description": "Tie Dye Blue Skies began her tie dye journey as a child, and never left! She's professionally tie dyed for over 15 years, and describes the process as magical. Bring home a bit of wearable magic!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Apparel & Textiles; apparel; witchy",
+    "confidence": "High",
+    "sourceOrder": 273,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 833,
+    "boothLabel": "#833",
+    "name": "Honey and Joe",
+    "url": "https://dora-creativecorner.com/projects/honey-and-joe",
+    "category": "Art & Illustration",
+    "description": "🍯Honey and Joe creates art that celebrates the joy people get from their pets and favorite wildlife. Their use of bright and bold colors brings warmth and fun to any home.",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Art & Illustration; art; pets/animals",
+    "confidence": "High",
+    "sourceOrder": 98,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  },
+  {
+    "booth": 833,
+    "boothLabel": "#833",
+    "name": "Sunshine Crafts",
+    "url": "https://www.instagram.com/kaecsandthesunshinecrafts/",
+    "category": "Fiber Art & Crochet",
+    "description": "☀️ Sunshine Crafts is a crochet business where every item is thoughtfully handmade. They specialize in cozy home decor like hanging plants, hot pads, tapestries, and plushies!",
+    "day": "Standard booth / verify days",
+    "status": "URL Found",
+    "tags": "Fiber Art & Crochet; crochet/fiber; home/decor",
+    "confidence": "High",
+    "sourceOrder": 217,
+    "block": "main-800",
+    "blockOrder": 10,
+    "hasUrl": true,
+    "pick": false
+  }
+];
+
+    const guide = document.getElementById("guide");
+    const empty = document.getElementById("empty");
+    const categorySelect = document.getElementById("category");
+    const dayFilter = document.getElementById("dayFilter");
+    const sortMode = document.getElementById("sortMode");
+    const searchInput = document.getElementById("search");
+    const pickOnlyInput = document.getElementById("pickOnly");
+    const clearButton = document.getElementById("clearFilters");
+    const legend = document.getElementById("legend");
+    const route = document.getElementById("route");
+    const resultCount = document.getElementById("resultCount");
+
+    let selectedCategories = new Set();
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, function (character) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        }[character];
+      });
+    }
+
+    function normalize(value) {
+      return String(value ?? "").trim().toLowerCase();
+    }
+
+    function vendorMatchesFilters(vendor) {
+      const selectedCategory = categorySelect.value;
+      const selectedDay = dayFilter.value;
+      const searchTerm = normalize(searchInput.value);
+      const pickOnly = pickOnlyInput.checked;
+
+      const searchableText = [
+        vendor.booth,
+        vendor.boothLabel,
+        vendor.name,
+        vendor.category,
+        vendor.description,
+        vendor.day,
+        vendor.tags,
+        vendor.status
+      ].join(" ").toLowerCase();
+
+      const dropdownIsAll = selectedCategory === "all";
+      const dayIsAll = selectedDay === "all";
+      const pillFiltersAreActive = selectedCategories.size > 0;
+
+      const matchesDropdown =
+        dropdownIsAll || vendor.category === selectedCategory;
+
+      const matchesDay =
+        dayIsAll || vendor.day === selectedDay;
+
+      const matchesPillFilters =
+        !pillFiltersAreActive || selectedCategories.has(vendor.category);
+
+      const matchesSearch =
+        searchTerm === "" || searchableText.includes(searchTerm);
+
+      const matchesPick =
+        !pickOnly || vendor.pick === true;
+
+      return matchesDropdown && matchesDay && matchesPillFilters && matchesSearch && matchesPick;
+    }
+
+    function compareVendors(a, b, mode) {
+      if (mode === "name") {
+        return a.name.localeCompare(b.name);
+      }
+
+      if (mode === "category") {
+        return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
+      }
+
+      if (mode === "booth") {
+        return (a.booth ?? 9999) - (b.booth ?? 9999) || a.name.localeCompare(b.name);
+      }
+
+      return (a.blockOrder - b.blockOrder) || (a.booth ?? 9999) - (b.booth ?? 9999) || a.name.localeCompare(b.name);
+    }
+
+    function vendorCard(vendor) {
+      const color = CATEGORY_COLORS[vendor.category] || "#777777";
+      const url = vendor.url && vendor.url !== "No URL" ? vendor.url : "";
+      const dayBadge = vendor.day && vendor.day !== "Standard booth / verify days"
+        ? `<span class="badge day">${escapeHtml(vendor.day)}</span>`
+        : "";
+      const noUrlBadge = url ? "" : `<span class="badge no-url">Needs URL</span>`;
+
+      const link = url
+        ? `<a class="visit" href="${escapeHtml(url)}" target="_blank" rel="noopener">Visit shop ↗</a>`
+        : `<span class="no-link">No URL yet</span>`;
+
+      const pick = vendor.pick
+        ? `<span class="pick" title="Parker + Porter pick">⭐</span>`
+        : "";
+
+      return `
+        <article class="card" style="--cat-color: ${color}">
+          <div class="card-top">
+            <span class="booth">${escapeHtml(vendor.boothLabel || vendor.booth)}</span>
+            <div class="badges">
+              ${pick}
+              ${dayBadge}
+              ${noUrlBadge}
+            </div>
+          </div>
+
+          <h3>${escapeHtml(vendor.name)}</h3>
+
+          <span class="category-tag">
+            ${escapeHtml(vendor.category)}
+          </span>
+
+          <p class="desc">
+            ${escapeHtml(vendor.description)}
+          </p>
+
+          ${link}
+        </article>
+      `;
+    }
+
+    function renderWalkingBlocks(filteredVendors) {
+      return BLOCKS.map(function (block) {
+        const vendorsInBlock = filteredVendors
+          .filter(function (vendor) {
+            return vendor.block === block.id;
+          })
+          .sort(function (a, b) {
+            return compareVendors(a, b, "walking");
+          });
+
+        if (vendorsInBlock.length === 0) {
+          return "";
+        }
+
+        return `
+          <section class="block" id="${escapeHtml(block.id)}">
+            <div class="block-head">
+              <h2>${escapeHtml(block.title)} <small>• ${escapeHtml(block.range)} • ${vendorsInBlock.length} shown</small></h2>
+              <p>${escapeHtml(block.description)}</p>
+            </div>
+
+            <div class="cards">
+              ${vendorsInBlock.map(vendorCard).join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    function renderSortedBlock(filteredVendors, mode) {
+      const sorted = filteredVendors.slice().sort(function (a, b) {
+        return compareVendors(a, b, mode);
+      });
+
+      const titleMap = {
+        booth: "All Matching Vendors by Booth Number",
+        name: "All Matching Vendors A-Z",
+        category: "All Matching Vendors by Category"
+      };
+
+      return `
+        <section class="block" id="sorted-results">
+          <div class="block-head">
+            <h2>${titleMap[mode] || "All Matching Vendors"} <small>• ${sorted.length} shown</small></h2>
+            <p>Switch back to walking order when you want the map-friendly route.</p>
+          </div>
+
+          <div class="cards">
+            ${sorted.map(vendorCard).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderGuide() {
+      const mode = sortMode.value;
+      const filteredVendors = VENDORS.filter(vendorMatchesFilters);
+
+      if (mode === "walking") {
+        guide.innerHTML = renderWalkingBlocks(filteredVendors);
+      } else {
+        guide.innerHTML = filteredVendors.length ? renderSortedBlock(filteredVendors, mode) : "";
+      }
+
+      empty.style.display = filteredVendors.length === 0 ? "block" : "none";
+
+      const pickMessage = pickOnlyInput.checked && filteredVendors.length === 0
+        ? "No Parker + Porter picks have been marked yet. Phase two sparkle pending."
+        : `${filteredVendors.length} of ${VENDORS.length} vendors showing`;
+
+      resultCount.textContent = pickMessage;
+    }
+
+    function buildCategoryDropdown() {
+      const categories = Array.from(new Set(VENDORS.map(function (vendor) {
+        return vendor.category;
+      }))).sort();
+
+      categories.forEach(function (category) {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category + " (" + VENDORS.filter(v => v.category === category).length + ")";
+        categorySelect.appendChild(option);
+      });
+    }
+
+    function buildDayDropdown() {
+      const days = Array.from(new Set(VENDORS.map(function (vendor) {
+        return vendor.day || "Standard booth / verify days";
+      }))).sort();
+
+      days.forEach(function (day) {
+        const option = document.createElement("option");
+        option.value = day;
+        option.textContent = day + " (" + VENDORS.filter(v => v.day === day).length + ")";
+        dayFilter.appendChild(option);
+      });
+    }
+
+    function buildLegend() {
+      const categories = Array.from(new Set(VENDORS.map(function (vendor) {
+        return vendor.category;
+      }))).sort();
+
+      legend.innerHTML = categories.map(function (category) {
+        return `
+          <button
+            type="button"
+            class="pill category-pill"
+            style="--cat-color: ${CATEGORY_COLORS[category] || "#777777"}"
+            data-category="${escapeHtml(category)}"
+            aria-pressed="false"
+          >
+            <span class="dot"></span>
+            ${escapeHtml(category)}
+          </button>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".category-pill").forEach(function (button) {
+        button.addEventListener("click", function () {
+          const category = button.dataset.category;
+
+          if (selectedCategories.has(category)) {
+            selectedCategories.delete(category);
+            button.classList.remove("active");
+            button.setAttribute("aria-pressed", "false");
+          } else {
+            selectedCategories.add(category);
+            button.classList.add("active");
+            button.setAttribute("aria-pressed", "true");
+          }
+
+          renderGuide();
+        });
+      });
+    }
+
+    function buildRoute() {
+      route.innerHTML = BLOCKS.map(function (block) {
+        return `
+          <a href="#${escapeHtml(block.id)}">
+            <strong>${escapeHtml(block.title)}</strong>
+            <span>${escapeHtml(block.range)}</span>
+            <span>${escapeHtml(block.mapNote)}.</span>
+            <span class="count">${block.count} vendors</span>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function clearFilters() {
+      categorySelect.value = "all";
+      dayFilter.value = "all";
+      sortMode.value = "walking";
+      searchInput.value = "";
+      pickOnlyInput.checked = false;
+      selectedCategories.clear();
+
+      document.querySelectorAll(".category-pill").forEach(function (button) {
+        button.classList.remove("active");
+        button.setAttribute("aria-pressed", "false");
+      });
+
+      renderGuide();
+    }
+
+    categorySelect.addEventListener("change", renderGuide);
+    dayFilter.addEventListener("change", renderGuide);
+    sortMode.addEventListener("change", renderGuide);
+    searchInput.addEventListener("input", renderGuide);
+    pickOnlyInput.addEventListener("change", renderGuide);
+    clearButton.addEventListener("click", clearFilters);
+
+    buildCategoryDropdown();
+    buildDayDropdown();
+    buildLegend();
+    buildRoute();
+    renderGuide();
+  </script>
+</body>
+</html>
