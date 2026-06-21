@@ -11,6 +11,129 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .contact-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.25rem;
+    }
+
+    .contact-action-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 210px;
+      padding: 1.5rem;
+      border-radius: 24px;
+      text-decoration: none;
+      color: #262126;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 246, 241, 0.76)),
+        radial-gradient(circle at top left, rgba(194, 110, 132, 0.22), transparent 42%);
+      border: 1px solid rgba(73, 58, 72, 0.16);
+      box-shadow: 0 18px 45px rgba(54, 39, 51, 0.11);
+      overflow: hidden;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .contact-action-card:hover,
+    .contact-action-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: rgba(117, 70, 102, 0.34);
+      box-shadow: 0 24px 60px rgba(54, 39, 51, 0.16);
+      outline: none;
+    }
+
+    .contact-action-card::after {
+      content: "→";
+      position: absolute;
+      right: 1.35rem;
+      bottom: 1.15rem;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: rgba(79, 48, 75, 0.58);
+      transition: transform 180ms ease, color 180ms ease;
+    }
+
+    .contact-action-card:hover::after,
+    .contact-action-card:focus-visible::after {
+      transform: translateX(4px);
+      color: rgba(79, 48, 75, 0.88);
+    }
+
+    .contact-action-card.is-disabled {
+      cursor: not-allowed;
+      opacity: 0.74;
+    }
+
+    .contact-action-card.is-disabled:hover,
+    .contact-action-card.is-disabled:focus-visible {
+      transform: none;
+      box-shadow: 0 18px 45px rgba(54, 39, 51, 0.11);
+      border-color: rgba(73, 58, 72, 0.16);
+    }
+
+    .contact-action-card.is-disabled::after {
+      content: "soon";
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-card-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 1.25rem;
+      background: #454545;
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(69, 69, 69, 0.18);
+    }
+
+    .contact-action-card h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.15;
+      color: #262126;
+    }
+
+    .contact-action-card p {
+      margin: 0.65rem 0 0;
+      max-width: 24ch;
+      color: rgba(38, 33, 38, 0.72);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .contact-mini-note {
+      margin-top: 1rem;
+      color: rgba(38, 33, 38, 0.68);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .contact-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .contact-card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-action-card {
+        min-height: 175px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -35,7 +158,7 @@
         <a href="systems.html">Systems</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a class="nav-cta" href="Jen Talbot Professional Resume.pdf">Resume</a>
+        <a class="nav-cta" href="Jen Talbot Professional Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
     </div>
   </header>
@@ -44,7 +167,7 @@
     <section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-content reveal">
-          <span class="eyebrow">Contact • resume • portfolio • next steps</span>
+          <span class="eyebrow">Contact • resume • LinkedIn • portfolio</span>
 
           <h1>
             Let’s build something
@@ -57,13 +180,13 @@
           </p>
 
           <p class="hero-copy">
-            The fastest way to reach me is email. I am happy to talk about campaign operations, Salesforce Account Engagement,
-            Pardot, HubSpot, CRM data quality, segmentation, reporting, landing pages, process improvement, and the beautiful little chaos of making marketing systems behave.
+            The fastest way to reach me is email. I am especially interested in conversations around Salesforce Account Engagement,
+            Pardot, HubSpot, CRM data quality, segmentation, reporting, landing pages, campaign QA, and process improvement.
           </p>
 
           <div class="hero-actions">
-            <a class="button primary" href="mailto:jenniferltalbot82@gmail.com">Email me →</a>
-            <a class="button secondary" href="Jen Talbot Professional Resume.pdf">Download resume</a>
+            <a class="button primary" href="mailto:jenniferltalbot82@gmail.com?subject=Portfolio%20inquiry%20for%20Jen%20Talbot">Email me →</a>
+            <a class="button secondary" href="Jen Talbot Professional Resume.pdf" target="_blank" rel="noopener">Open resume</a>
           </div>
 
           <div class="hero-note">
@@ -90,53 +213,59 @@
 
     <section class="proof" aria-labelledby="contact-options-title">
       <div class="section-wrap">
-        <p class="section-kicker">Get in touch</p>
-        <h2 class="section-title" id="contact-options-title">Useful links, no scavenger hunt required.</h2>
+        <p class="section-kicker">Contact links</p>
+        <h2 class="section-title" id="contact-options-title">Everything useful in one clean little command center.</h2>
         <p class="section-copy">
-          Recruiters, hiring managers, collaborators, and fellow systems nerds can start here.
+          No scavenger hunt. No mystery buttons. Just the important links.
         </p>
 
-        <div class="cred-grid reveal">
-          <a class="cred-card" href="mailto:jenniferltalbot82@gmail.com">
-            <strong>Email</strong>
-            <span>jenniferltalbot82@gmail.com</span>
+        <div class="contact-card-grid reveal">
+          <a class="contact-action-card" href="mailto:jenniferltalbot82@gmail.com?subject=Portfolio%20inquiry%20for%20Jen%20Talbot">
+            <div>
+              <div class="contact-card-icon" aria-hidden="true">@</div>
+              <h3>Email me</h3>
+              <p>Start a direct email conversation.</p>
+            </div>
           </a>
 
-          <a class="cred-card" href="Jen Talbot Professional Resume.pdf">
-            <strong>Resume</strong>
-            <span>Download my current professional resume.</span>
+          <a class="contact-action-card" href="https://www.linkedin.com/in/jen-l-talbot/" target="_blank" rel="noreferrer">
+            <div>
+              <div class="contact-card-icon" aria-hidden="true">in</div>
+              <h3>LinkedIn</h3>
+              <p>View my professional profile.</p>
+            </div>
           </a>
 
-          <a class="cred-card" href="marketing_automation_portfolio_jen_talbot_v2.pdf">
-            <strong>Portfolio PDF</strong>
-            <span>View the polished portfolio attachment version.</span>
+          <a class="contact-action-card" href="Jen Talbot Professional Resume.pdf" target="_blank" rel="noopener">
+            <div>
+              <div class="contact-card-icon" aria-hidden="true">CV</div>
+              <h3>Resume</h3>
+              <p>Open my current resume.</p>
+            </div>
           </a>
 
-          <a class="cred-card" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-            <strong>LinkedIn</strong>
-            <span>https://www.linkedin.com/in/jen-l-talbot/</span>
-          </a>
-
-          <a class="cred-card" href="work.html">
-            <strong>Selected Work</strong>
-            <span>Email, landing page, campaign system, and case study examples.</span>
-          </a>
-
-          <a class="cred-card" href="systems.html">
-            <strong>Systems</strong>
-            <span>How I think through automation, QA, launch readiness, and process cleanup.</span>
-          </a>
+          <div class="contact-action-card is-disabled" aria-disabled="true">
+            <div>
+              <div class="contact-card-icon" aria-hidden="true">PDF</div>
+              <h3>Portfolio PDF</h3>
+              <p>Polished downloadable version coming soon.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="contact-mini-note">
+          Email: <a href="mailto:jenniferltalbot82@gmail.com?subject=Portfolio%20inquiry%20for%20Jen%20Talbot">jenniferltalbot82@gmail.com</a>
+        </p>
       </div>
     </section>
 
     <section class="explore" aria-labelledby="fit-title">
       <div class="section-wrap">
         <p class="section-kicker">Best-fit conversations</p>
-        <h2 class="section-title" id="fit-title">The kinds of roles and projects I am most excited about.</h2>
+        <h2 class="section-title" id="fit-title">What I am most excited to talk about.</h2>
         <p class="section-copy">
           I am especially interested in roles where campaign execution and operational improvement are both valued.
-          Translation: I do not want to only push buttons. I want to help build the system that makes the buttons worth pushing.
+          I do not want to only push buttons. I want to help build the system that makes the buttons worth pushing.
         </p>
 
         <div class="explore-grid reveal">
@@ -156,7 +285,7 @@
               <div class="card-icon" aria-hidden="true">▦</div>
               <h3>CRM Operations</h3>
               <p>
-                Salesforce, CRM data quality, list logic, stakeholder support, campaign connections, process documentation, and cleanup.
+                Salesforce, CRM data quality, list logic, stakeholder support, campaign connections, documentation, and cleanup.
               </p>
             </div>
             <span class="card-link">Systems lane</span>
@@ -196,9 +325,9 @@
         </p>
 
         <div class="cta-row">
-          <a class="button primary" href="mailto:jenniferltalbot82@gmail.com">Email Jen</a>
-          <a class="button secondary" href="Jen Talbot Professional Resume.pdf">Resume</a>
-          <a class="button secondary" href="marketing_automation_portfolio_jen_talbot_v2.pdf">Portfolio PDF</a>
+          <a class="button primary" href="mailto:jenniferltalbot82@gmail.com?subject=Portfolio%20inquiry%20for%20Jen%20Talbot">Email Jen</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/jen-l-talbot/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button secondary" href="Jen Talbot Professional Resume.pdf" target="_blank" rel="noopener">Resume</a>
           <a class="button secondary" href="index.html">Back home</a>
         </div>
       </div>
@@ -214,6 +343,7 @@
         <a href="systems.html">Systems</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/in/jen-l-talbot/" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
