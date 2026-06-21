@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 /* =========================================================
    Jen Talbot Portfolio Homepage
    File: style.css
@@ -27,7 +29,7 @@
   --radius-md: 16px;
   --radius-sm: 12px;
   --max: 1180px;
-  --font-heading: "Fraunces", Georgia, serif;
+  --font-heading: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -248,7 +250,9 @@ h1 {
   margin-top: 1.1rem;
   font-family: var(--font-heading);
   font-size: clamp(3.25rem, 7vw, 6.9rem);
-  letter-spacing: -0.065em;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
 }
 
 h1 .gradient-text {
@@ -501,7 +505,9 @@ section {
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 4.4vw, 4.5rem);
-  letter-spacing: -0.045em;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
   max-width: 840px;
 }
 
@@ -531,7 +537,7 @@ section {
 .cred-card strong {
   display: block;
   font-size: clamp(1.55rem, 2.4vw, 2.25rem);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   color: var(--plum-deep);
   line-height: 1;
 }
@@ -606,7 +612,7 @@ section {
 
 .explore-card h3 {
   font-size: 1.18rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
 }
 
 .explore-card p {
@@ -688,7 +694,7 @@ section {
 
 .project-body h3 {
   font-size: 1.35rem;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
 }
 
 .project-body p {
@@ -879,7 +885,9 @@ section {
   color: var(--white);
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5.2vw, 5rem);
-  letter-spacing: -0.055em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
   max-width: 900px;
 }
 
@@ -1091,6 +1099,7 @@ section {
 
   h1 {
     font-size: clamp(2.8rem, 17vw, 4rem);
+    letter-spacing: -0.035em;
   }
 
   .hero-copy,
