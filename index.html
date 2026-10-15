@@ -9,6 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .home-hero h1 { margin-top: 0; }
+
+    @media (min-width: 761px) {
+      .home-hero .hero-media {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .home-hero .portrait-card {
+        position: relative;
+        top: auto;
+        right: auto;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,10 +48,9 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="hero home-hero" id="top">
       <div class="hero-grid">
         <div class="hero-content reveal">
-          <span class="eyebrow">marketing automation • lifecycle • CRM • campaign systems • app building</span>
           <h1>I turn campaign chaos into <span class="gradient-text">marketing systems that scale.</span></h1>
           <p class="hero-copy">
             I connect customer psychology, campaign strategy, CRM data, automation, sales processes, and AI-assisted development to build systems that work for humans. And when the problem needs something new, I can take the idea all the way into a working application.
