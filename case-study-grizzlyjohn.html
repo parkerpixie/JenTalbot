@@ -3,27 +3,243 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GrizzlyJohn product case study from Jen Talbot and Undergrowth Apps, showing human-centered product thinking and AI-assisted development." />
-  <title>GrizzlyJohn Product Case Study | Jen Talbot</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css" />
+  <meta name="description" content="GrizzlyJohn product case study from Jen Talbot and Undergrowth Apps, showing human-centered product design, working application development, AI-assisted technical execution, and real-user iteration." />
+  <title>GrizzlyJohn App Case Study | Jen Talbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .app-screen-frame {
+      aspect-ratio: 941 / 2048;
+      background: #f5efe4;
+    }
+
+    .app-screen-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .app-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.25rem;
+      align-items: start;
+    }
+
+    .app-shot {
+      padding: 0.6rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(73,61,84,0.13);
+      box-shadow: 0 18px 42px rgba(46,33,53,0.12);
+    }
+
+    .app-shot img {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(73,61,84,0.08);
+    }
+
+    .app-shot figcaption {
+      padding: 0.9rem 0.45rem 0.35rem;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .app-shot figcaption strong {
+      display: block;
+      margin-bottom: 0.22rem;
+      font-size: 1rem;
+    }
+
+    .builder-callout {
+      margin-top: 2.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .app-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .app-gallery {
+        gap: 0.75rem;
+      }
+
+      .app-shot {
+        padding: 0.35rem;
+        border-radius: 20px;
+      }
+
+      .app-shot img {
+        border-radius: 16px;
+      }
+
+      .app-shot figcaption {
+        font-size: 0.78rem;
+      }
+    }
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-nav" aria-label="Primary navigation"><div class="nav-inner"><a class="brand" href="index.html"><span class="brand-mark">JT</span><span class="brand-text"><span>Jen Talbot</span><span>Marketing Automation</span></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button><nav class="nav-links" id="nav-links"><a href="work.html">Case Studies</a><a href="systems.html">Systems</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="Jen Talbot Professional Resume.pdf">Resume</a></nav></div></header>
+<header class="site-nav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Jen Talbot home"><span class="brand-mark" aria-hidden="true">JT</span><span class="brand-text"><span>Jen Talbot</span><span>Marketing Automation</span></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links"><a href="work.html">Case Studies</a><a href="systems.html">Systems</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="Jen Talbot Professional Resume.pdf">Resume</a></nav>
+  </div>
+</header>
+
 <main id="main">
-<section class="hero"><div class="hero-grid"><div class="hero-content reveal"><span class="eyebrow">case study 04 • Undergrowth Apps • product thinking • AI-assisted development</span><h1>GrizzlyJohn: a product <span class="gradient-text">people actually use.</span></h1><p class="hero-copy">A mobile-first personal product designed around one actual human, combining reflection, curiosity, recovery, exploration, memory, and gentle reasons to return.</p><div class="hero-actions"><a class="button primary" href="#story">See the product thinking →</a><a class="button secondary" href="#ai-build">How AI helped me build it</a></div><div class="hero-note"><span class="spark">✦</span><p>This is where my marketing brain, product brain, and AI-assisted technical toolkit meet: understand the person, identify useful friction to remove, build the experience, watch what they use, and improve from there.</p></div></div><div class="hero-media reveal"><div class="portrait-card"><div class="portrait-frame"></div><p class="portrait-caption">Screenshot slot: add the strongest GrizzlyJohn mobile screen here once we choose the visual story for this case study.</p></div></div></div></section>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <span class="eyebrow">case study 04 • Undergrowth Apps • working application • AI-assisted development</span>
+        <h1>GrizzlyJohn: I did not just imagine the product. <span class="gradient-text">I built it.</span></h1>
+        <p class="hero-copy">A mobile-first web application designed around one actual human, then expanded through real use into a personalized system for daily context, reflection, curiosity, recovery, exploration, memory, and gentle reasons to return.</p>
+        <div class="hero-actions"><a class="button primary" href="#product">See the working product →</a><a class="button secondary" href="#ai-build">How AI expanded my reach</a></div>
+        <div class="hero-note"><span class="spark">✦</span><p>GrizzlyJohn is the portfolio proof my resume cannot fully show: I can move from human insight to product requirements to interface to working application, then keep improving it from actual behavior.</p></div>
+      </div>
+      <div class="hero-media reveal" aria-label="GrizzlyJohn app home screen">
+        <div class="portrait-card">
+          <div class="portrait-frame app-screen-frame"><img src="assets/images/grizzlyjohn-today.png" alt="GrizzlyJohn mobile app Today screen with greeting and weather" /></div>
+          <p class="portrait-caption">A real mobile-first application in use, not a concept mockup. The Today screen adapts to the day and gives the user useful context without turning life into a productivity dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="proof" id="story"><div class="section-wrap"><p class="section-kicker">The problem</p><h2 class="section-title">Build something personal enough to be useful, but light enough to invite return.</h2><p class="section-copy">GrizzlyJohn was not designed from a generic persona. It was designed around a real person and the things that matter to him: longtime sobriety, thoughtful reflection, podcasts, tiny adventures, park memories, curiosity, humor, and a gentle grizzly guide with a little National Park energy.</p><div class="cred-grid reveal"><div class="cred-card"><strong>Today</strong><span>daily reflection, rotating Bear Wisdom, Side Quest, and an optional personal note</span></div><div class="cred-card"><strong>Wisdom</strong><span>custom reflection cards with a thought, question, and tiny practice</span></div><div class="cred-card"><strong>Quest</strong><span>random Side Quests, completion tracking, and trail-stamp milestones</span></div><div class="cred-card"><strong>Roam</strong><span>personal park/place passport with visited, want-to-go, and memory fields</span></div><div class="cred-card"><strong>Campfire Radio</strong><span>podcast discovery plus a local listening log for ideas worth keeping</span></div><div class="cred-card"><strong>Privacy</strong><span>personal entries stay on the device in local storage in the current MVP</span></div></div></div></section>
+  <section class="proof" id="product" aria-labelledby="problem-title">
+    <div class="section-wrap">
+      <p class="section-kicker">The product problem</p>
+      <h2 class="section-title" id="problem-title">Build something personal enough to matter, but light enough to become part of real life.</h2>
+      <p class="section-copy">GrizzlyJohn was not designed from a generic persona. It was designed around one real user, his routines, interests, humor, recovery, places, media habits, and the kinds of prompts that might actually be useful on an ordinary Tuesday.</p>
+      <div class="cred-grid reveal">
+        <div class="cred-card"><strong>Today</strong><span>contextual greeting, weather, daily reflection, small wins, and useful next actions</span></div>
+        <div class="cred-card"><strong>Wisdom</strong><span>reflection cards, emotional check-ins, guided skills, and personal history</span></div>
+        <div class="cred-card"><strong>Quest</strong><span>randomized Side Quests, completion tracking, and trail-style milestones</span></div>
+        <div class="cred-card"><strong>Roam</strong><span>travel research, park and place discovery, saved ideas, and memory-oriented exploration</span></div>
+        <div class="cred-card"><strong>Campfire</strong><span>personalized listening and reading resources worth returning to</span></div>
+        <div class="cred-card"><strong>Local-first data</strong><span>personal entries and app state are stored on the device in the current product architecture</span></div>
+      </div>
+    </div>
+  </section>
 
-<section aria-labelledby="system-title"><div class="section-wrap"><p class="section-kicker">Product approach</p><h2 class="section-title" id="system-title">Personalization starts with the human, not the feature list.</h2><div class="flow reveal"><div class="flow-grid"><div class="flow-step"><div class="flow-num">01</div><h3>Understand</h3><p>Start with what the person already values, returns to, talks about, and finds emotionally useful.</p></div><div class="flow-step"><div class="flow-num">02</div><h3>Shape the experience</h3><p>Group those needs into a small set of useful behaviors rather than building a giant everything-app.</p></div><div class="flow-step"><div class="flow-num">03</div><h3>Build simply</h3><p>Use a mobile-first, lightweight architecture with no framework or account requirement in the MVP.</p></div><div class="flow-step"><div class="flow-num">04</div><h3>Observe adoption</h3><p>Pay attention to what gets used voluntarily. Repeat use is stronger evidence than a feature checklist.</p></div><div class="flow-step"><div class="flow-num">05</div><h3>Iterate</h3><p>Let real behavior and feedback determine what deserves expansion, refinement, or removal.</p></div></div></div></div></section>
+  <section aria-labelledby="evolution-title">
+    <div class="section-wrap">
+      <p class="section-kicker">From MVP to living product</p>
+      <h2 class="section-title" id="evolution-title">The roadmap came from use, not from a feature wish list.</h2>
+      <p class="section-copy">The first version was intentionally simple. Then the intended user actually used it. That changed the work. GrizzlyJohn expanded into richer daily tools, contextual weather, reflection and history, Side Quests, travel discovery, content shelves, lightweight personal tracking, and new interaction patterns because those additions had a reason to exist.</p>
 
-<section class="explore" id="ai-build" aria-labelledby="ai-build-title"><div class="section-wrap"><p class="section-kicker">What AI made possible</p><h2 class="section-title" id="ai-build-title">AI helped me cross the gap from product idea to working application.</h2><p class="section-copy">GrizzlyJohn represents a different kind of work in my portfolio. I started with a specific human need, shaped the product experience around one actual user, and used AI-assisted development to move from concept to functioning product much faster than I could have alone.</p><div class="explore-grid reveal"><article class="explore-card"><div><div class="card-icon">{ }</div><h3>Technical implementation</h3><p>AI helped accelerate HTML, CSS, JavaScript, debugging, structure decisions, and the practical work of turning ideas into functioning features.</p></div><span class="card-link">Build faster</span></article><article class="explore-card"><div><div class="card-icon">↻</div><h3>Interface iteration</h3><p>I could test more versions, refine interaction patterns, and keep shaping the experience around how the actual user responded.</p></div><span class="card-link">Test more</span></article><article class="explore-card"><div><div class="card-icon">▦</div><h3>Data + structure</h3><p>AI supported thinking through local data structures, feature organization, privacy choices, and how separate pieces of the product should work together.</p></div><span class="card-link">Structure better</span></article><article class="explore-card"><div><div class="card-icon">🧠</div><h3>Human judgment</h3><p>My role stayed the important one: define the problem, choose what belongs, evaluate the output, test whether it works, and decide what happens next.</p></div><span class="card-link">Judgment first</span></article></div><div class="skills-panel reveal" aria-label="GrizzlyJohn build stack" style="margin-top:2rem;"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Local Storage</span><span>Mobile-First UX</span><span>GitHub</span><span>AI-Assisted Development</span><span>Rapid Prototyping</span></div></div></section>
+      <div class="flow reveal">
+        <div class="flow-grid">
+          <div class="flow-step"><div class="flow-num">01</div><h3>Understand</h3><p>Start with what the person already values, returns to, talks about, and finds emotionally useful.</p></div>
+          <div class="flow-step"><div class="flow-num">02</div><h3>Design</h3><p>Translate those needs into a small number of clear behaviors instead of a giant everything-app.</p></div>
+          <div class="flow-step"><div class="flow-num">03</div><h3>Build</h3><p>Turn the concept into a functioning mobile-first web application using HTML, CSS, JavaScript, browser storage, and iterative interface work.</p></div>
+          <div class="flow-step"><div class="flow-num">04</div><h3>Observe</h3><p>Watch what gets used voluntarily. Real return behavior tells me more than a feature checklist ever could.</p></div>
+          <div class="flow-step"><div class="flow-num">05</div><h3>Expand</h3><p>Add the next useful layer only when behavior, feedback, or a real-life need gives it a reason to exist.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="explore" aria-labelledby="proof-value"><div class="section-wrap"><p class="section-kicker">What this proves</p><h2 class="section-title" id="proof-value">I can move from customer understanding to product adoption.</h2><div class="explore-grid reveal"><article class="explore-card"><div><div class="card-icon">🧠</div><h3>Behavioral design</h3><p>The product is organized around motivations and habits rather than technology for technology's sake.</p></div></article><article class="explore-card"><div><div class="card-icon">↻</div><h3>Iteration</h3><p>Real usage creates a feedback loop for deciding what to improve next.</p></div></article><article class="explore-card"><div><div class="card-icon">♡</div><h3>Adoption</h3><p>The most important result so far is simple: the intended user returns to it and enjoys using it.</p></div></article><article class="explore-card"><div><div class="card-icon">✦</div><h3>AI-assisted development</h3><p>This project shows how I use AI to expand my technical reach while keeping product decisions, testing, and judgment human-led.</p></div></article></div></div></section>
+  <section class="explore" aria-labelledby="screens-title">
+    <div class="section-wrap">
+      <p class="section-kicker">Working product</p>
+      <h2 class="section-title" id="screens-title">Four screens. Four different jobs. One coherent app.</h2>
+      <p class="section-copy">These are live product screens from the application itself. The visual system stays consistent while each part of the app supports a different user need.</p>
 
-<section class="cta"><div class="cta-card reveal"><h2>The takeaway</h2><p>GrizzlyJohn gives me something campaign work cannot: a direct view of the full loop from human need to product concept to AI-assisted build to actual adoption. It is proof that I can use new technology to expand what I can execute without losing sight of the person the product is for.</p><div class="cta-row"><a class="button primary" href="case-study-crm-operations.html">Next: CRM operations →</a><a class="button secondary" href="work.html">All case studies</a><a class="button secondary" href="systems.html#ai-force-multiplier">My AI working model</a></div></div></section>
+      <div class="app-gallery reveal">
+        <figure class="app-shot">
+          <img src="assets/images/grizzlyjohn-today.png" alt="GrizzlyJohn Today screen showing a personalized greeting and weather" />
+          <figcaption><strong>Today</strong>Contextual daily home screen with local weather, a personalized greeting, and useful things already on the trail.</figcaption>
+        </figure>
+        <figure class="app-shot">
+          <img src="assets/images/grizzlyjohn-quest.png" alt="GrizzlyJohn Quest screen showing a randomized side quest" />
+          <figcaption><strong>Quest</strong>A playful action engine that turns curiosity into a concrete invitation, with completion state and milestones.</figcaption>
+        </figure>
+        <figure class="app-shot">
+          <img src="assets/images/grizzlyjohn-roam.png" alt="GrizzlyJohn Roam screen showing travel and campground discovery tools" />
+          <figcaption><strong>Roam</strong>A travel discovery launchpad built around the user's actual interests, not a generic destination feed.</figcaption>
+        </figure>
+        <figure class="app-shot">
+          <img src="assets/images/grizzlyjohn-campfire.png" alt="GrizzlyJohn Campfire screen showing personalized reading and listening resources" />
+          <figcaption><strong>Campfire</strong>A personalized shelf for podcasts, reading, recovery resources, and things worth returning to.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="explore" aria-labelledby="builder-title">
+    <div class="section-wrap">
+      <p class="section-kicker">What I can build</p>
+      <h2 class="section-title" id="builder-title">I can take a human problem all the way into a working application.</h2>
+      <p class="section-copy">That is the capability I want this case study to make visible. My value is not limited to writing requirements or handing a concept to a developer. With AI-assisted development, I can participate much deeper in the actual product build.</p>
+      <div class="explore-grid reveal">
+        <article class="explore-card"><div><div class="card-icon">▦</div><h3>Product architecture</h3><p>Define the problem, identify the useful behaviors, organize the experience, and decide what belongs in the first version.</p></div><span class="card-link">From need to structure</span></article>
+        <article class="explore-card"><div><div class="card-icon">{ }</div><h3>Application development</h3><p>Build responsive interfaces and functioning product logic with HTML, CSS, JavaScript, browser storage, GitHub, and AI-assisted technical work.</p></div><span class="card-link">From structure to software</span></article>
+        <article class="explore-card"><div><div class="card-icon">⇄</div><h3>Data + integration thinking</h3><p>Think through state, persistence, external data, device context, privacy choices, and how separate parts of the application need to work together.</p></div><span class="card-link">From screens to system</span></article>
+        <article class="explore-card"><div><div class="card-icon">↻</div><h3>Iteration</h3><p>Use real behavior and feedback to refine the experience, add useful capability, and avoid building features simply because they sound impressive.</p></div><span class="card-link">From launch to learning</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="explore" id="ai-build" aria-labelledby="ai-build-title">
+    <div class="section-wrap">
+      <p class="section-kicker">What AI made possible</p>
+      <h2 class="section-title" id="ai-build-title">AI did not make the product. It changed what I could personally execute.</h2>
+      <p class="section-copy">AI shortened the distance between "this would help" and "this now exists." It gave me a technical collaborator for implementation, debugging, structure decisions, experimentation, and rapid iteration while I stayed responsible for the product judgment.</p>
+      <div class="explore-grid reveal">
+        <article class="explore-card"><div><div class="card-icon">{ }</div><h3>Technical implementation</h3><p>Accelerate HTML, CSS, JavaScript, debugging, refactoring, and the practical work of turning product ideas into functioning features.</p></div><span class="card-link">Build faster</span></article>
+        <article class="explore-card"><div><div class="card-icon">↻</div><h3>Interface iteration</h3><p>Test more versions, compare interaction patterns, refine responsive behavior, and improve the experience without waiting for a separate development cycle.</p></div><span class="card-link">Test more</span></article>
+        <article class="explore-card"><div><div class="card-icon">▦</div><h3>System thinking</h3><p>Work through data structures, state, feature relationships, privacy choices, and edge cases that sit behind the visible screen.</p></div><span class="card-link">Structure better</span></article>
+        <article class="explore-card"><div><div class="card-icon">🧠</div><h3>Human judgment</h3><p>Define the problem, decide what belongs, evaluate the output, test whether it actually works, and choose what happens next.</p></div><span class="card-link">Judgment first</span></article>
+      </div>
+      <div class="skills-panel reveal" aria-label="GrizzlyJohn build stack" style="margin-top:2rem;"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive UI</span><span>Local Storage</span><span>Location-Aware Experience</span><span>GitHub</span><span>AI-Assisted Development</span><span>Rapid Prototyping</span><span>Product Iteration</span></div>
+    </div>
+  </section>
+
+  <section class="explore" aria-labelledby="proof-value">
+    <div class="section-wrap">
+      <p class="section-kicker">What this proves</p>
+      <h2 class="section-title" id="proof-value">I can move from customer understanding to shipped product.</h2>
+      <div class="explore-grid reveal">
+        <article class="explore-card"><div><div class="card-icon">🧠</div><h3>Behavioral design</h3><p>The app is organized around motivations, habits, friction, and return reasons rather than technology for technology's sake.</p></div></article>
+        <article class="explore-card"><div><div class="card-icon">⌘</div><h3>Shipping ability</h3><p>I can move past the brief and into a functioning application with real interface states, stored data, responsive behavior, and working interactions.</p></div></article>
+        <article class="explore-card"><div><div class="card-icon">♡</div><h3>Adoption</h3><p>The intended user returns to the product and enjoys using it. That matters more to me than building a long feature list nobody asked for.</p></div></article>
+        <article class="explore-card"><div><div class="card-icon">✦</div><h3>Expanded technical reach</h3><p>AI lets me cross more of the distance between strategy, systems thinking, product design, and technical execution myself.</p></div></article>
+      </div>
+
+      <div class="cta-card reveal builder-callout">
+        <h2>This is the superpower the resume cannot fully show.</h2>
+        <p>I still bring the marketing automation, CRM, lifecycle, data, sales, psychology, and systems experience. Now I can also use that context to design and build working tools around the problem. I do not have to stop at "someone should make this." I can start making it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-card reveal">
+      <h2>The takeaway</h2>
+      <p>GrizzlyJohn gives me a direct view of the full product loop: understand a human need, shape a useful concept, build the application, ship it, observe real use, and keep improving it. That is a fundamentally different level of technical leverage than my job titles alone suggest.</p>
+      <div class="cta-row"><a class="button primary" href="work.html">Back to case studies</a><a class="button secondary" href="systems.html#ai-force-multiplier">My AI working model</a><a class="button secondary" href="contact.html">Talk with me</a></div>
+    </div>
+  </section>
 </main>
-<footer class="site-footer"><div class="footer-inner"><p>© <span id="year"></span> Jen Talbot.</p><div class="footer-links"><a href="index.html">Home</a><a href="work.html">Case Studies</a><a href="systems.html">Systems</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></footer>
-<script>const n=document.querySelector('.nav-toggle'),l=document.querySelector('.nav-links');n?.addEventListener('click',()=>{const o=l.classList.toggle('is-open');n.setAttribute('aria-expanded',String(o))});const ob=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('is-visible')}),{threshold:.14});document.querySelectorAll('.reveal').forEach(el=>ob.observe(el));document.getElementById('year').textContent=new Date().getFullYear();</script>
-</body></html>
+
+<footer class="site-footer"><div class="footer-inner"><p>© <span id="year"></span> Jen Talbot. Built with clean systems, warm colors, and no beige résumé soup.</p><div class="footer-links"><a href="index.html">Home</a><a href="work.html">Case Studies</a><a href="systems.html">Systems</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></footer>
+<script>
+  const n=document.querySelector('.nav-toggle'),l=document.querySelector('.nav-links');
+  n?.addEventListener('click',()=>{const o=l.classList.toggle('is-open');n.setAttribute('aria-expanded',String(o))});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{l.classList.remove('is-open');n?.setAttribute('aria-expanded','false')}));
+  const ob=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('is-visible')}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>ob.observe(el));
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
