@@ -60,9 +60,45 @@
       margin-top: 2.25rem;
     }
 
+    /* The phone screenshot is much taller than a normal portrait image.
+       Keep the hero card in normal document flow so it cannot spill into
+       the product-problem section below it. */
+    .grizzly-hero .hero-media {
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .grizzly-hero .portrait-card {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: min(72%, 320px);
+    }
+
+    @media (max-width: 1060px) {
+      .grizzly-hero .hero-media {
+        min-height: 0;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .grizzly-hero .portrait-card {
+        width: min(70vw, 320px);
+      }
+    }
+
     @media (max-width: 900px) {
       .app-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grizzly-hero .portrait-card {
+        width: min(82vw, 320px);
+        margin: 1rem auto 0;
       }
     }
 
@@ -97,7 +133,7 @@
 </header>
 
 <main id="main">
-  <section class="hero">
+  <section class="hero grizzly-hero">
     <div class="hero-grid">
       <div class="hero-content reveal">
         <span class="eyebrow">case study 04 • Undergrowth Apps • working application • AI-assisted development</span>
@@ -161,7 +197,7 @@
           <figcaption><strong>Today</strong>Contextual daily home screen with local weather, a personalized greeting, and useful things already on the trail.</figcaption>
         </figure>
         <figure class="app-shot">
-          <img src="assets/images/grizzlyjohn-quest.png" alt="GrizzlyJohn Quest screen showing a randomized side quest" />
+          <img src="assets/images/grizzlyjohn-campfire.png" alt="GrizzlyJohn Quest screen showing a randomized side quest" />
           <figcaption><strong>Quest</strong>A playful action engine that turns curiosity into a concrete invitation, with completion state and milestones.</figcaption>
         </figure>
         <figure class="app-shot">
@@ -169,7 +205,7 @@
           <figcaption><strong>Roam</strong>A travel discovery launchpad built around the user's actual interests, not a generic destination feed.</figcaption>
         </figure>
         <figure class="app-shot">
-          <img src="assets/images/grizzlyjohn-campfire.png" alt="GrizzlyJohn Campfire screen showing personalized reading and listening resources" />
+          <img src="assets/images/grizzlyjohn-quest.png" alt="GrizzlyJohn Campfire screen showing personalized reading and listening resources" />
           <figcaption><strong>Campfire</strong>A personalized shelf for podcasts, reading, recovery resources, and things worth returning to.</figcaption>
         </figure>
       </div>
